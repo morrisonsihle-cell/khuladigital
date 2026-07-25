@@ -63,7 +63,20 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock submit handler — connect to backend/email service here
+    const serviceLabels: Record<string, string> = {
+      'study-bundle': 'Business Study Bundle (R200/month)',
+      starter: 'Starter Website (R2,500 – R4,000)',
+      business: 'Business Website (R5,000 – R10,000)',
+      ecommerce: 'E-Commerce Website (R8,000 – R20,000+)',
+      management: 'Website Management (R200 – R2,500/month)',
+      marketing: 'Digital Marketing Support',
+      branding: 'Branding & Design',
+      consulting: 'Business Growth Consulting',
+    };
+    const serviceLabel = formData.service ? serviceLabels[formData.service] || formData.service : 'Not specified';
+    const message = `Hello KHULA Digital! 👋\n\nNew Inquiry:\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'Not provided'}\n*Service:* ${serviceLabel}\n\n*Message:*\n${formData.message || 'No message provided'}`;
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/27651085200?text=${encoded}`, '_blank');
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
     setFormData({ name: '', email: '', phone: '', service: '', message: '' });
@@ -208,10 +221,11 @@ export default function ContactSection() {
                       className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary transition-colors"
                     >
                       <option value="">Select a service...</option>
+                      <option value="study-bundle">Business Study Bundle (R200/month)</option>
                       <option value="starter">Starter Website (R2,500 – R4,000)</option>
                       <option value="business">Business Website (R5,000 – R10,000)</option>
                       <option value="ecommerce">E-Commerce Website (R8,000 – R20,000+)</option>
-                      <option value="management">Website Management (R500 – R2,500/month)</option>
+                      <option value="management">Website Management (R200 – R2,500/month)</option>
                       <option value="marketing">Digital Marketing Support</option>
                       <option value="branding">Branding & Design</option>
                       <option value="consulting">Business Growth Consulting</option>
@@ -236,7 +250,7 @@ export default function ContactSection() {
                     type="submit"
                     className="btn-gold w-full py-4 rounded-xl text-sm font-semibold uppercase tracking-widest"
                   >
-                    Send Inquiry
+                    Send via WhatsApp
                   </button>
                 </form>
               )}

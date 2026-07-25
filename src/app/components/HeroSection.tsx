@@ -1,7 +1,77 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AppImage from '@/components/ui/AppImage';
+
+const TYPING_PHRASES = [
+  'Growing Businesses Online',
+  'Building Your Digital Future',
+  'Empowering South African Brands',
+  'Crafting Powerful Websites',
+];
+
+function TypingAnimation() {
+  const [displayed, setDisplayed] = useState('');
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = TYPING_PHRASES[phraseIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && charIndex < current.length) {
+      timeout = setTimeout(() => setCharIndex((c) => c + 1), 60);
+    } else if (!deleting && charIndex === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && charIndex > 0) {
+      timeout = setTimeout(() => setCharIndex((c) => c - 1), 35);
+    } else if (deleting && charIndex === 0) {
+      setDeleting(false);
+      setPhraseIndex((p) => (p + 1) % TYPING_PHRASES.length);
+    }
+
+    setDisplayed(current.slice(0, charIndex));
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, phraseIndex]);
+
+  return (
+    <span className="inline-block min-h-[1.5em]">
+      {displayed}
+      <span className="inline-block w-[2px] h-[1em] bg-primary ml-0.5 align-middle animate-pulse" />
+    </span>
+  );
+}
+
+function SplitTextReveal({ text, className }: { text: string; className?: string }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const letters = text.split('');
+
+  return (
+    <span ref={ref} className={className} aria-label={text}>
+      {letters.map((char, i) => (
+        <span
+          key={i}
+          className="inline-block"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0) skewX(0deg)' : 'translateY(60px) skewX(-12deg)',
+            transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 45}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 45}ms`,
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -86,23 +156,24 @@ export default function HeroSection() {
           <div className="h-px w-12 bg-primary/50" />
         </div>
 
-        {/* Main headline */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-1 mb-4">
+        {/* Main headline — split text reveal on KHULA */}
+        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-1 mb-4 overflow-hidden">
           <h1 className="font-display font-black leading-none tracking-tight text-hero-display text-gold-gradient">
-            KHULA
+            <SplitTextReveal text="KHULA" />
           </h1>
         </div>
 
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-2 mb-10">
-          <span className="font-display font-light italic text-hero-sub text-foreground/90 tracking-wide">
-            Digital
+        {/* Split text reveal on Digital */}
+        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-2 mb-10 overflow-hidden">
+          <span className="font-display font-black italic text-hero-sub text-foreground/90 tracking-wide" style={{ letterSpacing: '0.08em' }}>
+            <SplitTextReveal text="Digital" />
           </span>
         </div>
 
-        {/* Tagline */}
+        {/* Tagline with typing animation */}
         <div className="opacity-100 animate-on-scroll animate-fade-in-delay-3 mb-4">
           <p className="text-xs md:text-sm uppercase tracking-[0.5em] text-muted-foreground font-medium">
-            Growing Businesses Online
+            <TypingAnimation />
           </p>
         </div>
 
