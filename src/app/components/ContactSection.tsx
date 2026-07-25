@@ -7,8 +7,8 @@ const contactDetails = [
   {
     icon: 'PhoneIcon',
     label: 'Phone / WhatsApp',
-    value: '060 123 4567',
-    href: 'tel:0601234567',
+    value: '065 108 5200',
+    href: 'https://wa.me/27651085200',
   },
   {
     icon: 'EnvelopeIcon',
