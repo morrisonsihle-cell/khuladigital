@@ -44,15 +44,7 @@ export default function Header() {
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <AppLogo size={36} />
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-base tracking-widest text-gold-gradient leading-none">
-                KHULA
-              </span>
-              <span className="text-[8px] uppercase tracking-[0.35em] text-muted-foreground leading-none mt-0.5">
-                Digital
-              </span>
-            </div>
+            <AppLogo size={52} />
           </Link>
 
           {/* Desktop Nav */}

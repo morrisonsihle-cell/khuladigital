@@ -1,7 +1,79 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AppImage from '@/components/ui/AppImage';
+
+const TYPING_PHRASES = [
+  'KHULA Digital',
+];
+
+function TypingHeadline() {
+  const [displayed, setDisplayed] = useState('');
+  const [charIndex, setCharIndex] = useState(0);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    const text = TYPING_PHRASES[0];
+    if (charIndex < text.length) {
+      let timeout = setTimeout(() => {
+        setDisplayed(text.slice(0, charIndex + 1));
+        setCharIndex((c) => c + 1);
+      }, 80);
+      return () => clearTimeout(timeout);
+    } else {
+      setDone(true);
+    }
+  }, [charIndex]);
+
+  return (
+    <span>
+      {displayed}
+      {!done && (
+        <span className="inline-block w-[3px] h-[0.85em] bg-primary ml-1 align-middle animate-pulse" />
+      )}
+    </span>
+  );
+}
+
+const TAGLINE_PHRASES = [
+  'Growing Businesses Online',
+  'Building Your Digital Future',
+  'Empowering South African Brands',
+  'Crafting Powerful Websites',
+];
+
+function TypingAnimation() {
+  const [displayed, setDisplayed] = useState('');
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = TAGLINE_PHRASES[phraseIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && charIndex < current.length) {
+      timeout = setTimeout(() => setCharIndex((c) => c + 1), 60);
+    } else if (!deleting && charIndex === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && charIndex > 0) {
+      timeout = setTimeout(() => setCharIndex((c) => c - 1), 35);
+    } else if (deleting && charIndex === 0) {
+      setDeleting(false);
+      setPhraseIndex((p) => (p + 1) % TAGLINE_PHRASES.length);
+    }
+
+    setDisplayed(current.slice(0, charIndex));
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, phraseIndex]);
+
+  return (
+    <span className="inline-block min-h-[1.5em]">
+      {displayed}
+      <span className="inline-block w-[2px] h-[1em] bg-primary ml-0.5 align-middle animate-pulse" />
+    </span>
+  );
+}
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -75,7 +147,6 @@ export default function HeroSection() {
         backgroundRepeat: 'repeat',
         backgroundSize: '200px'
       }} />
-      
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto pt-24 pb-16">
@@ -86,23 +157,17 @@ export default function HeroSection() {
           <div className="h-px w-12 bg-primary/50" />
         </div>
 
-        {/* Main headline */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-1 mb-4">
+        {/* Main headline — typing effect on KHULA Digital */}
+        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-1 mb-10">
           <h1 className="font-display font-black leading-none tracking-tight text-hero-display text-gold-gradient">
-            KHULA
+            <TypingHeadline />
           </h1>
         </div>
 
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-2 mb-10">
-          <span className="font-display font-light italic text-hero-sub text-foreground/90 tracking-wide">
-            Digital
-          </span>
-        </div>
-
-        {/* Tagline */}
+        {/* Tagline with typing animation */}
         <div className="opacity-100 animate-on-scroll animate-fade-in-delay-3 mb-4">
           <p className="text-xs md:text-sm uppercase tracking-[0.5em] text-muted-foreground font-medium">
-            Growing Businesses Online
+            <TypingAnimation />
           </p>
         </div>
 
@@ -123,8 +188,6 @@ export default function HeroSection() {
             Our Story
           </a>
         </div>
-
-        {/* Stats row removed */}
       </div>
 
       {/* Scroll indicator */}
@@ -132,22 +195,7 @@ export default function HeroSection() {
         <div className="w-px h-16 mx-auto" style={{ background: 'linear-gradient(to bottom, #C9A227, transparent)' }} />
       </div>
 
-      {/* Side decorative images (desktop only) */}
-      <div className="hidden xl:block absolute left-8 top-1/2 -translate-y-1/2 w-40 h-56 opacity-100 animate-on-scroll animate-fade-in z-10">
-        <div className="w-full h-full border border-border/50 p-1.5 image-zoom">
-          <AppImage
-            src="https://img.rocket.new/generatedImages/rocket_gen_img_1d9d70146-1772246541867.png"
-            alt="Digital analytics dashboard showing website growth metrics on dark screen"
-            width={160}
-            height={224}
-            className="w-full h-full object-cover opacity-70" />
-          
-        </div>
-        <span className="absolute -bottom-6 left-0 text-[8px] uppercase tracking-[0.4em] text-muted-foreground">
-          Digital Growth
-        </span>
-      </div>
-
+      {/* Side decorative image (desktop only) — right side */}
       <div className="hidden xl:block absolute right-8 top-1/2 -translate-y-1/2 w-40 h-56 opacity-100 animate-on-scroll animate-fade-in-delay-1 z-10">
         <div className="w-full h-full border border-border/50 p-1.5 image-zoom">
           <AppImage
@@ -156,12 +204,11 @@ export default function HeroSection() {
             width={160}
             height={224}
             className="w-full h-full object-cover opacity-70" />
-          
         </div>
         <span className="absolute -bottom-6 right-0 text-[8px] uppercase tracking-[0.4em] text-muted-foreground text-right">
           Built in SA
         </span>
       </div>
-    </section>);
-
+    </section>
+  );
 }

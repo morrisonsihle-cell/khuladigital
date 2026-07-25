@@ -26,7 +26,7 @@ const packages = [
     price: 'R5,000 – R10,000',
     period: 'once-off',
     icon: 'BuildingOffice2Icon',
-    highlight: true,
+    highlight: false,
     tagline: 'Perfect for growing businesses that want more visibility.',
     features: [
       'Up to 10 Pages',
@@ -62,7 +62,7 @@ const packages = [
   {
     name: 'Website Management',
     price: 'R200 – R2,500',
-    period: '/month',
+    period: 'once-off',
     icon: 'WrenchScrewdriverIcon',
     highlight: false,
     tagline: 'Keep your website secure, updated and performing at its best.',
@@ -113,27 +113,104 @@ export default function PackagesSection() {
           </p>
         </div>
 
+        {/* ★ MAIN DEAL — Business Study Bundle ★ */}
+        <div className="animate-on-scroll opacity-100 animate-fade-in mb-12">
+          <div className="relative rounded-3xl overflow-hidden border-2 border-primary shadow-[0_0_60px_rgba(201,162,39,0.3)] bg-card">
+            {/* Top badge */}
+            <div className="bg-gold-gradient text-primary-foreground text-[10px] font-bold uppercase tracking-widest text-center py-2.5">
+              🌟 Best Value — Featured Package Deal
+            </div>
+
+            <div className="flex flex-col lg:flex-row">
+              {/* Left: Info */}
+              <div className="flex-1 p-8 lg:p-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center">
+                    <Icon name="AcademicCapIcon" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-2xl font-bold text-foreground leading-tight">
+                      Business Study Bundle
+                    </h3>
+                    <p className="text-[10px] uppercase tracking-widest text-primary font-semibold mt-0.5">
+                      Monthly Subscription
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-lg">
+                  Everything you need to grow your business knowledge and digital presence — bundled into one affordable monthly plan. Perfect for entrepreneurs and small business owners ready to level up.
+                </p>
+
+                {/* Features grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    'Business Growth Courses',
+                    'Digital Marketing Training',
+                    'Financial Literacy Modules',
+                    'Entrepreneurship Guides',
+                    'Monthly Live Webinars',
+                    'Business Templates & Tools',
+                    'Community Access',
+                    'Certificate of Completion',
+                  ].map((feature) => (
+                    <div key={feature} className="flex items-center gap-2 text-sm text-foreground/80">
+                      <Icon name="CheckCircleIcon" size={16} variant="solid" className="text-primary flex-shrink-0" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Pricing CTA */}
+              <div className="lg:w-72 p-8 lg:p-10 bg-primary/5 border-t lg:border-t-0 lg:border-l border-primary/20 flex flex-col items-center justify-center text-center gap-6">
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-2">Starting from</p>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="font-display text-5xl font-bold text-gold-gradient">R200</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">per month</p>
+                </div>
+
+                <div className="w-full space-y-2">
+                  <div className="flex items-center justify-center gap-2 text-xs text-primary font-medium">
+                    <Icon name="ShieldCheckIcon" size={14} className="text-primary" />
+                    Cancel anytime
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-xs text-primary font-medium">
+                    <Icon name="StarIcon" size={14} className="text-primary" />
+                    No lock-in contract
+                  </div>
+                </div>
+
+                <a
+                  href="#contact"
+                  className="btn-gold w-full py-4 rounded-xl text-sm font-semibold uppercase tracking-wider text-center"
+                >
+                  Get This Deal
+                </a>
+
+                <p className="text-[10px] text-muted-foreground">
+                  Limited spots available each month
+                </p>
+              </div>
+            </div>
+
+            {/* Hover bottom line */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gold-gradient" />
+          </div>
+        </div>
+
         {/* Packages grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {packages.map((pkg, i) => (
             <div
               key={pkg.name}
-              className={`animate-on-scroll opacity-100 animate-fade-in card-hover rounded-2xl overflow-hidden flex flex-col relative group ${
-                pkg.highlight
-                  ? 'border-2 border-primary shadow-[0_0_40px_rgba(201,162,39,0.2)]'
-                  : 'border border-border'
-              }`}
+              className={`animate-on-scroll opacity-100 animate-fade-in card-hover rounded-2xl overflow-hidden flex flex-col relative group border border-border`}
               style={{ animationDelay: `${i * 0.12}s` }}
             >
-              {/* Highlighted badge */}
-              {pkg.highlight && (
-                <div className="bg-gold-gradient text-primary-foreground text-[9px] font-bold uppercase tracking-widest text-center py-2">
-                  Most Popular
-                </div>
-              )}
-
               {/* Header */}
-              <div className={`p-6 pb-4 ${pkg.highlight ? 'bg-primary/10' : 'bg-card'}`}>
+              <div className="p-6 pb-4 bg-card">
                 <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
                   <Icon name={pkg.icon as any} size={20} className="text-primary" />
                 </div>
@@ -172,10 +249,7 @@ export default function PackagesSection() {
               <div className="p-6 pt-0 bg-card">
                 <a
                   href="#contact"
-                  className={`block text-center py-3 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
-                    pkg.highlight
-                      ? 'btn-gold' :'btn-outline-gold'
-                  }`}
+                  className="block text-center py-3 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200 btn-outline-gold"
                 >
                   Get Started
                 </a>
