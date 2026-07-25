@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0A08;
+  --foreground: #F5F0E8;
+  --primary: #C9A227;
+  --primary-foreground: #0A0A08;
+  --secondary: #1C1A0E;
+  --secondary-foreground: #F5F0E8;
+  --accent: #D4AF37;
+  --accent-foreground: #0A0A08;
+  --muted: #2A2410;
+  --muted-foreground: #8A7A50;
+  --card: #141209;
+  --card-foreground: #F5F0E8;
+  --border: #2E2710;
+  --input: #1C1A0E;
+  --ring: #C9A227;
+  --radius: 0.5rem;
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-display: var(--font-fraunces), serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #8B6914 0%, #C9A227 40%, #F0D060 60%, #C9A227 80%, #8B6914 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gold-shimmer {
+    background: linear-gradient(90deg, #8B6914 0%, #D4AF37 35%, #F5E070 50%, #D4AF37 65%, #8B6914 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .border-gold {
+    border-color: rgba(201, 162, 39, 0.3);
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #8B6914, #C9A227, #D4AF37);
+  }
+
+  .grid-overlay-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(201, 162, 39, 0.08), transparent);
+  }
+
+  .image-zoom {
+    overflow: hidden;
+  }
+
+  .image-zoom img {
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .image-zoom:hover img {
+    transform: scale(1.05);
+  }
+
+  .reveal-word {
+    opacity: 0.12;
+    transition: opacity 0.4s ease;
+    display: inline;
+  }
+
+  .reveal-word.active {
+    opacity: 1;
+  }
+
+  .animate-on-scroll {
+    animation-play-state: paused !important;
+  }
+
+  .animate-on-scroll.animate {
+    animation-play-state: running !important;
+  }
+
+  .gold-line-hover {
+    width: 2rem;
+    height: 1px;
+    background: linear-gradient(to right, #C9A227, #D4AF37);
+    transition: width 0.3s ease;
+  }
+
+  .group:hover .gold-line-hover {
+    width: 3rem;
+  }
+
+  .process-arrow {
+    color: var(--primary);
+    opacity: 0.5;
+  }
+
+  .card-hover {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(201, 162, 39, 0.12);
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #8B6914, #C9A227, #D4AF37);
+    color: #0A0A08;
+    font-weight: 600;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-gold:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-gold {
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    color: var(--primary);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn-outline-gold:hover {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: var(--primary);
+  }
+
+  .section-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  .blob-gold {
+    background: radial-gradient(ellipse, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+    filter: blur(60px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .blob-amber {
+    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .package-highlight {
+    background: linear-gradient(135deg, #8B6914 0%, #C9A227 50%, #D4AF37 100%);
+  }
+
+  .text-hero-display {
+    font-size: clamp(3.5rem, 12vw, 10rem);
+  }
+
+  .text-hero-sub {
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .text-section-heading {
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+
+  .checkmark-gold::before {
+    content: '';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: linear-gradient(135deg, #C9A227, #D4AF37);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes animationIn {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.98); }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-blob-1 {
+  animation: blobFloat 12s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: blobFloat 16s ease-in-out infinite reverse;
+}
+
+.animate-blob-3 {
+  animation: blobFloat 20s ease-in-out infinite 4s;
+}
+
+.animate-fade-in {
+  animation: animationIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-delay-1 {
+  animation: animationIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+.animate-fade-in-delay-2 {
+  animation: animationIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.animate-fade-in-delay-3 {
+  animation: animationIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+}
+
+.animate-fade-in-delay-4 {
+  animation: animationIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
