@@ -90,7 +90,7 @@ export default function AboutSection() {
             </h2>
           </div>
           <p className="text-foreground/60 max-w-md leading-relaxed text-sm md:text-base mt-2">
-            Khula Digital is a South African digital solutions company that helps small businesses
+            Khula Digital Solutions is a South African digital solutions company that helps small businesses
             establish, manage, and grow their online presence through websites, digital marketing,
             and business growth consulting.
           </p>
@@ -157,7 +157,7 @@ export default function AboutSection() {
                 <span className="section-label block mb-3">Market Opportunity</span>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   Thousands of small businesses in South Africa still operate offline or have a poor
-                  online presence. Khula Digital bridges that gap by providing professional, affordable
+                  online presence. Khula Digital Solutions bridges that gap by providing professional, affordable
                   and effective digital solutions.
                 </p>
               </div>

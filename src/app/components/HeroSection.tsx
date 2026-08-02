@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AppImage from '@/components/ui/AppImage';
 
 const TYPING_PHRASES = [
-  'KHULA Digital',
+  'KHULA DIGITAL SOLUTIONS',
 ];
 
 function TypingHeadline() {
@@ -27,7 +27,7 @@ function TypingHeadline() {
 
   return (
     <span>
-      {displayed}
+      <span className={done ? 'animate-blink-text' : ''}>{displayed}</span>
       {!done && (
         <span className="inline-block w-[3px] h-[0.85em] bg-primary ml-1 align-middle animate-pulse" />
       )}

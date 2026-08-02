@@ -38,7 +38,7 @@ export default function WhyUsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
           {/* Left — 3 cols */}
           <div className="lg:col-span-3 animate-on-scroll opacity-100 animate-fade-in">
-            <span className="section-label block mb-4">Why Khula Digital</span>
+            <span className="section-label block mb-4">Why Khula Digital Solutions</span>
             <h2 className="font-display text-section-heading font-bold text-foreground leading-tight mb-8">
               Why Choose <span className="text-gold-shimmer italic">Us?</span>
             </h2>
@@ -74,7 +74,7 @@ export default function WhyUsSection() {
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="h-px flex-1 bg-primary/20" />
-                <span className="text-[10px] uppercase tracking-widest text-primary">Khula Digital</span>
+                <span className="text-[10px] uppercase tracking-widest text-primary">Khula Digital Solutions</span>
               </div>
             </div>
 

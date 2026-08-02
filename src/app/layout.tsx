@@ -24,8 +24,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Khula Digital — Growing South African Businesses Online',
-  description: 'Khula Digital helps South African small businesses establish, manage, and grow their online presence through affordable websites, digital marketing, and business growth consulting.',
+  title: 'Khula Digital Solutions — Growing South African Businesses Online',
+  description: 'Khula Digital Solutions helps South African small businesses establish, manage, and grow their online presence through affordable websites, digital marketing, and business growth consulting.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className={dmSans.className}>
         {children}
 
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fkhuladigit9356back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.19" />
+        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fkhuladigit9356back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.20" />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></body>
     </html>
   );

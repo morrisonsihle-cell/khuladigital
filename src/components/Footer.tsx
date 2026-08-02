@@ -11,10 +11,10 @@ export default function Footer() {
           {/* Left: Logo + Tagline */}
           <div className="flex flex-col gap-4 max-w-xs">
             <div className="flex items-center gap-3">
-              <AppLogo size={32} />
+              <AppLogo size={56} />
               <div className="flex flex-col">
-                <span className="font-display font-bold text-sm tracking-widest text-gold-gradient leading-none">
-                  KHULA DIGITAL
+                <span className="font-display font-bold text-sm tracking-widest leading-none">
+                  <span className="text-gold-gradient">KHULA DIGITAL </span><span className="text-black text-xs">SOLUTIONS</span>
                 </span>
                 <span className="text-[8px] uppercase tracking-[0.35em] text-muted-foreground leading-none mt-0.5">
                   (PTY) LTD
@@ -43,7 +43,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2026 Khula Digital (PTY) LTD · KwaZulu-Natal, South Africa
+            © 2026 Khula Digital Solutions (PTY) LTD · KwaZulu-Natal, South Africa
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy</a>

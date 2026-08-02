@@ -47,6 +47,15 @@ module.exports = {
         sans: ['var(--font-dm-sans)', 'sans-serif'],
         display: ['var(--font-fraunces)', 'serif'],
       },
+      keyframes: {
+        'blink-text': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.15' },
+        },
+      },
+      animation: {
+        'blink-text': 'blink-text 1.2s ease-in-out infinite',
+      },
       plugins: [require('@tailwindcss/typography')],
     },
   },
