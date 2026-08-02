@@ -25,9 +25,22 @@ function TypingHeadline() {
     }
   }, [charIndex]);
 
+  const mainText = 'KHULA DIGITAL';
+  const solutionsText = ' SOLUTIONS';
+
+  const displayedMain = displayed.slice(0, mainText.length);
+  const displayedSolutions = displayed.length > mainText.length
+    ? displayed.slice(mainText.length)
+    : '';
+
   return (
     <span>
-      <span className={done ? 'animate-blink-text' : ''}>{displayed}</span>
+      <span className={done ? 'animate-blink-text' : ''}>{displayedMain}</span>
+      {displayedSolutions && (
+        <span className="text-2xl md:text-3xl font-bold text-black align-middle ml-2">
+          {displayedSolutions}
+        </span>
+      )}
       {!done && (
         <span className="inline-block w-[3px] h-[0.85em] bg-primary ml-1 align-middle animate-pulse" />
       )}
