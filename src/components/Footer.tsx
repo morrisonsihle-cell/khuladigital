@@ -13,8 +13,8 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <AppLogo size={32} />
               <div className="flex flex-col">
-                <span className="font-display font-bold text-sm tracking-widest text-gold-gradient leading-none">
-                  KHULA DIGITAL SOLUTIONS
+                <span className="font-display font-bold text-sm tracking-widest leading-none">
+                  <span className="text-gold-gradient">KHULA DIGITAL </span><span className="text-black text-xs">SOLUTIONS</span>
                 </span>
                 <span className="text-[8px] uppercase tracking-[0.35em] text-muted-foreground leading-none mt-0.5">
                   (PTY) LTD
