@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Left: Logo + Tagline */}
           <div className="flex flex-col gap-4 max-w-xs">
             <div className="flex items-center gap-3">
-              <AppLogo size={32} />
+              <AppLogo size={56} />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-sm tracking-widest leading-none">
                   <span className="text-gold-gradient">KHULA DIGITAL </span><span className="text-black text-xs">SOLUTIONS</span>
