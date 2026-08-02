@@ -102,7 +102,7 @@ export default function ContactSection() {
       consulting: 'Business Growth Consulting',
     };
     const serviceLabel = formData.service ? serviceLabels[formData.service] || formData.service : 'Not specified';
-    const message = `Hello KHULA Digital! 👋\n\nNew Inquiry:\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'Not provided'}\n*Service:* ${serviceLabel}\n\n*Message:*\n${formData.message || 'No message provided'}`;
+    const message = `Hello KHULA DIGITAL SOLUTIONS! 👋\n\nNew Inquiry:\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'Not provided'}\n*Service:* ${serviceLabel}\n\n*Message:*\n${formData.message || 'No message provided'}`;
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/27651085200?text=${encoded}`, '_blank');
     setSubmitted(true);

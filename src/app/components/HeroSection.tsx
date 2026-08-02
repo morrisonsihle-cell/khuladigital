@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AppImage from '@/components/ui/AppImage';
 
 const TYPING_PHRASES = [
-  'KHULA DIGITAL',
+  'KHULA DIGITAL SOLUTIONS',
 ];
 
 function TypingHeadline() {

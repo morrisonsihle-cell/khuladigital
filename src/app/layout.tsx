@@ -24,8 +24,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Khula Digital — Growing South African Businesses Online',
-  description: 'Khula Digital helps South African small businesses establish, manage, and grow their online presence through affordable websites, digital marketing, and business growth consulting.',
+  title: 'Khula Digital Solutions — Growing South African Businesses Online',
+  description: 'Khula Digital Solutions helps South African small businesses establish, manage, and grow their online presence through affordable websites, digital marketing, and business growth consulting.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
