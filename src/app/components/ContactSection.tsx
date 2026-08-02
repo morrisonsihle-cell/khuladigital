@@ -13,14 +13,14 @@ const contactDetails = [
   {
     icon: 'EnvelopeIcon',
     label: 'Email',
-    value: 'info@khuladigital.co.za',
-    href: 'mailto:info@khuladigital.co.za',
+    value: 'info@khuladigitalsolutions.co.za',
+    href: 'mailto:info@khuladigitalsolutions.co.za',
   },
   {
     icon: 'GlobeAltIcon',
     label: 'Website',
-    value: 'www.khuladigital.co.za',
-    href: 'https://www.khuladigital.co.za',
+    value: 'www.khuladigitalsolutions.co.za',
+    href: 'https://www.khuladigitalsolutions.co.za',
   },
   {
     icon: 'MapPinIcon',
@@ -29,6 +29,32 @@ const contactDetails = [
     href: '#',
   },
 ];
+
+function useTypingEffect(text: string, speed = 80) {
+  const [displayed, setDisplayed] = useState('');
+  const [done, setDone] = useState(false);
+  const indexRef = useRef(0);
+
+  useEffect(() => {
+    indexRef.current = 0;
+    setDisplayed('');
+    setDone(false);
+
+    const interval = setInterval(() => {
+      if (indexRef.current < text.length) {
+        indexRef.current += 1;
+        setDisplayed(text.slice(0, indexRef.current));
+      } else {
+        setDone(true);
+        clearInterval(interval);
+      }
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, [text, speed]);
+
+  return { displayed, done };
+}
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -40,6 +66,8 @@ export default function ContactSection() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const { displayed: typedTalk, done: talkDone } = useTypingEffect("Let's Talk", 90);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,7 +119,12 @@ export default function ContactSection() {
         <div className="animate-on-scroll opacity-100 animate-fade-in mb-16 text-center">
           <span className="section-label block mb-3">Get In Touch</span>
           <h2 className="font-display text-section-heading font-bold text-foreground leading-tight">
-            Let&apos;s <span className="text-gold-shimmer italic">Talk</span>
+            <span className="text-gold-shimmer italic">
+              {typedTalk}
+            </span>
+            {!talkDone && (
+              <span className="inline-block w-[3px] h-[0.75em] bg-primary ml-1 align-middle animate-pulse" />
+            )}
           </h2>
           <p className="text-muted-foreground text-sm mt-4 max-w-md mx-auto">
             Ready to grow your business online? Contact us today for a free consultation.
