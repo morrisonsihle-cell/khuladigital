@@ -112,7 +112,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" ref={sectionRef} className="py-20 bg-secondary/30 relative overflow-hidden">
-      <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-20 pointer-events-none" />
+      <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}

@@ -47,9 +47,9 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
       <div
         className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center"
         style={{
-          background: 'linear-gradient(135deg, #1a1500 0%, #2a2000 100%)',
-          border: '1px solid rgba(201,162,39,0.3)',
-          boxShadow: '0 0 20px rgba(201,162,39,0.08)',
+          background: '#111111',
+          border: '1px solid rgba(255,255,255,0.1)',
+          boxShadow: '0 0 20px rgba(0,0,0,0.4)',
         }}
       >
         <span className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-gold-gradient tabular-nums">
@@ -67,8 +67,8 @@ function PrizeCard({ emoji, title, desc }: { emoji: string; title: string; desc:
     <div
       className="flex items-start gap-3 p-4 rounded-xl"
       style={{
-        background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-        border: '1px solid rgba(201,162,39,0.15)',
+        background: '#111111',
+        border: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       <span className="text-2xl flex-shrink-0">{emoji}</span>
@@ -88,7 +88,7 @@ function Step({ num, title, desc }: { num: string; title: string; desc: string }
         className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center font-display font-bold text-sm"
         style={{
           background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)',
-          color: '#0A0A08',
+          color: '#080808',
         }}
       >
         {num}
@@ -207,15 +207,15 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
     return (
       <div
         className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center"
-        style={{ background: '#0A0A08' }}
+        style={{ background: '#080808' }}
       >
-        <div className="blob-gold absolute w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none" />
+        <div className="blob-gold absolute w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none" />
         <div className="relative z-10 max-w-md w-full">
           <div
             className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"
             style={{
               background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)',
-              boxShadow: '0 0 40px rgba(201,162,39,0.4)',
+              boxShadow: '0 0 30px rgba(201,162,39,0.25)',
             }}
           >
             🎉
@@ -233,7 +233,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           </button>
           <Link
             href="/"
-            className="block text-center text-xs text-muted-foreground hover:text-primary transition-colors py-3"
+            className="block text-center text-xs text-muted-foreground hover:text-foreground transition-colors py-3"
           >
             ← Return to Khula Digital Solutions
           </Link>
@@ -244,12 +244,12 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
 
   // ─── Main Page ────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: '#0A0A08' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: '#080808' }}>
 
       {/* ── Minimal Nav ── */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3"
-        style={{ background: 'rgba(10,10,8,0.92)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(201,162,39,0.1)' }}
+        style={{ background: 'rgba(8,8,8,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
       >
         <Link href="/" className="flex items-center gap-2">
           <AppLogo size={32} />
@@ -266,23 +266,23 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
 
       {/* ── HERO ── */}
       <section className="relative flex flex-col items-center justify-center px-5 pt-24 pb-10 text-center overflow-hidden" style={{ minHeight: '100svh' }}>
-        {/* Background blobs */}
-        <div className="blob-gold absolute w-[500px] h-[500px] top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 opacity-20 pointer-events-none" />
-        <div className="blob-amber absolute w-[300px] h-[300px] bottom-0 right-0 opacity-25 pointer-events-none" />
-        {/* Grid lines */}
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(201,162,39,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,162,39,0.04) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        {/* Background blobs — very subtle */}
+        <div className="blob-gold absolute w-[500px] h-[500px] top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 opacity-10 pointer-events-none" />
+        <div className="blob-amber absolute w-[300px] h-[300px] bottom-0 right-0 opacity-10 pointer-events-none" />
+        {/* Grid lines — white, very subtle */}
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="relative z-10 max-w-4xl mx-auto w-full">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-[10px] uppercase tracking-[0.25em] font-medium" style={{ background: 'rgba(201,162,39,0.1)', border: '1px solid rgba(201,162,39,0.25)', color: '#C9A227' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-[10px] uppercase tracking-[0.25em] font-medium" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#C9A227' }}>
             🏆 Competition Open · Closes 25 Sep 2026
           </div>
 
           {/* Main headline */}
           <h1 className="font-display font-bold leading-none mb-4" style={{ fontSize: 'clamp(2.4rem, 10vw, 6rem)' }}>
-            <span className="text-gold-gradient block">5 BUSINESSES.</span>
-            <span className="text-gold-gradient block">5 WEBSITES.</span>
-            <span className="text-foreground block" style={{ fontSize: 'clamp(1.3rem, 5vw, 3.5rem)' }}>R40,000 TOTAL VALUE.</span>
+            <span className="text-foreground block">5 BUSINESSES.</span>
+            <span className="text-foreground block">5 WEBSITES.</span>
+            <span className="text-gold-gradient block" style={{ fontSize: 'clamp(1.3rem, 5vw, 3.5rem)' }}>R40,000 TOTAL VALUE.</span>
           </h1>
 
           {/* Sub-headline */}
@@ -292,8 +292,8 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
               style={{
                 fontSize: 'clamp(0.85rem, 2.8vw, 1.5rem)',
                 background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)',
-                color: '#0A0A08',
-                boxShadow: '0 0 30px rgba(201,162,39,0.35)',
+                color: '#080808',
+                boxShadow: '0 0 20px rgba(201,162,39,0.2)',
               }}
             >
               WIN AN E-COMMERCE WEBSITE WORTH R8,000!
@@ -309,7 +309,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             <button
               onClick={scrollToForm}
               className="btn-gold px-8 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest w-full sm:w-auto"
-              style={{ boxShadow: '0 0 30px rgba(201,162,39,0.3)' }}
+              style={{ boxShadow: '0 0 20px rgba(201,162,39,0.2)' }}
             >
               🚀 ENTER NOW
             </button>
@@ -326,9 +326,9 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             <div
               className="rounded-2xl overflow-hidden mx-auto"
               style={{
-                background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-                border: '1px solid rgba(201,162,39,0.2)',
-                boxShadow: '0 0 60px rgba(201,162,39,0.12)',
+                background: '#111111',
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: '0 0 40px rgba(0,0,0,0.5)',
                 padding: '1.25rem',
               }}
             >
@@ -337,32 +337,32 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-                <div className="flex-1 ml-2 h-5 rounded-md flex items-center px-3" style={{ background: 'rgba(201,162,39,0.08)', border: '1px solid rgba(201,162,39,0.15)' }}>
+                <div className="flex-1 ml-2 h-5 rounded-md flex items-center px-3" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
                   <span className="text-[9px] text-muted-foreground">yourbusiness.co.za</span>
                 </div>
               </div>
               {/* Mock website */}
-              <div className="rounded-xl overflow-hidden" style={{ background: '#0d0d0b' }}>
-                <div className="h-8 flex items-center px-4 gap-3" style={{ background: 'rgba(201,162,39,0.06)', borderBottom: '1px solid rgba(201,162,39,0.1)' }}>
+              <div className="rounded-xl overflow-hidden" style={{ background: '#0d0d0d' }}>
+                <div className="h-8 flex items-center px-4 gap-3" style={{ background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                   <div className="w-16 h-2 rounded-full bg-gold-gradient opacity-60" />
                   <div className="flex gap-2 ml-auto">
-                    {[1,2,3].map(i => <div key={i} className="w-8 h-1.5 rounded-full" style={{ background: 'rgba(201,162,39,0.2)' }} />)}
+                    {[1,2,3].map(i => <div key={i} className="w-8 h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }} />)}
                   </div>
                 </div>
                 <div className="p-4 space-y-3">
-                  <div className="h-20 rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(201,162,39,0.1), rgba(201,162,39,0.05))', border: '1px solid rgba(201,162,39,0.1)' }}>
+                  <div className="h-20 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
                     <div className="p-3 space-y-1.5">
                       <div className="w-24 h-2 rounded-full bg-gold-gradient opacity-50" />
-                      <div className="w-32 h-1.5 rounded-full" style={{ background: 'rgba(201,162,39,0.2)' }} />
+                      <div className="w-32 h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }} />
                       <div className="w-16 h-5 rounded-lg mt-2 bg-gold-gradient opacity-70" />
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {[1,2,3].map(i => (
-                      <div key={i} className="h-14 rounded-lg" style={{ background: 'rgba(201,162,39,0.06)', border: '1px solid rgba(201,162,39,0.1)' }}>
+                      <div key={i} className="h-14 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                         <div className="p-2 space-y-1">
-                          <div className="w-full h-6 rounded" style={{ background: 'rgba(201,162,39,0.1)' }} />
-                          <div className="w-3/4 h-1 rounded-full" style={{ background: 'rgba(201,162,39,0.15)' }} />
+                          <div className="w-full h-6 rounded" style={{ background: 'rgba(255,255,255,0.05)' }} />
+                          <div className="w-3/4 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }} />
                         </div>
                       </div>
                     ))}
@@ -375,13 +375,13 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── COUNTDOWN ── */}
-      <section className="py-12 px-5 relative" style={{ background: 'linear-gradient(180deg, #0A0A08 0%, #0f0e06 100%)' }}>
+      <section className="py-12 px-5 relative" style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label block mb-4">Competition Closes In</span>
           {countdown.closed ? (
             <div
               className="inline-block font-display font-bold text-3xl sm:text-4xl uppercase tracking-widest px-8 py-4 rounded-2xl"
-              style={{ background: 'rgba(201,162,39,0.1)', border: '1px solid rgba(201,162,39,0.3)', color: '#C9A227' }}
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#C9A227' }}
             >
               ENTRIES CLOSED
             </div>
@@ -404,7 +404,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
 
       {/* ── PRIZE ── */}
       <section id="prize" className="py-14 px-5 relative overflow-hidden">
-        <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-10 pointer-events-none" />
+        <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-8 pointer-events-none" />
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="section-label block mb-3">The Prize</span>
@@ -414,7 +414,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             <div className="mt-4 inline-block">
               <span
                 className="font-display font-bold text-xl sm:text-3xl px-5 py-2 rounded-xl"
-                style={{ background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)', color: '#0A0A08' }}
+                style={{ background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)', color: '#080808' }}
               >
                 R8,000 WEBSITE PACKAGE
               </span>
@@ -439,9 +439,8 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           <div
             className="text-center py-5 px-5 rounded-2xl"
             style={{
-              background: 'linear-gradient(135deg, rgba(201,162,39,0.12), rgba(201,162,39,0.06))',
+              background: '#111111',
               border: '1px solid rgba(201,162,39,0.3)',
-              boxShadow: '0 0 30px rgba(201,162,39,0.08)',
             }}
           >
             <p className="font-display font-bold text-lg sm:text-2xl text-gold-gradient uppercase tracking-widest">
@@ -453,7 +452,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── HOW TO ENTER ── */}
-      <section className="py-14 px-5" style={{ background: 'linear-gradient(180deg, #0A0A08 0%, #0d0c06 100%)' }}>
+      <section className="py-14 px-5" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
             <span className="section-label block mb-3">Simple Process</span>
@@ -484,7 +483,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       {/* ── ENTRY FORM ── */}
       {/* Extra bottom padding so sticky CTA doesn't overlap last field */}
       <section id="entry-form" ref={formRef} className="py-14 px-4 pb-32 md:pb-14 relative overflow-hidden">
-        <div className="blob-gold absolute w-[400px] h-[400px] bottom-0 left-0 opacity-10 pointer-events-none" />
+        <div className="blob-gold absolute w-[400px] h-[400px] bottom-0 left-0 opacity-8 pointer-events-none" />
         <div className="max-w-lg mx-auto relative z-10">
           <div className="text-center mb-8">
             <span className="section-label block mb-3">Apply Now</span>
@@ -501,9 +500,9 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             noValidate
             className="rounded-2xl p-5 sm:p-7 space-y-5"
             style={{
-              background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-              border: '1px solid rgba(201,162,39,0.2)',
-              boxShadow: '0 0 60px rgba(201,162,39,0.06)',
+              background: '#111111',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0 0 40px rgba(0,0,0,0.4)',
             }}
           >
             {/* Business Name */}
@@ -516,7 +515,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 onChange={handleChange}
                 placeholder="e.g. Sipho's Fashion Store"
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.businessName ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                style={{ background: '#080808', border: `1px solid ${errors.businessName ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.businessName && <p className="text-red-400 text-xs mt-1">{errors.businessName}</p>}
             </div>
@@ -531,12 +530,12 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 onChange={handleChange}
                 placeholder="e.g. Sipho Dlamini"
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.ownerName ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                style={{ background: '#080808', border: `1px solid ${errors.ownerName ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.ownerName && <p className="text-red-400 text-xs mt-1">{errors.ownerName}</p>}
             </div>
 
-            {/* WhatsApp — full width on mobile */}
+            {/* WhatsApp */}
             <div>
               <FieldLabel>WhatsApp Number *</FieldLabel>
               <input
@@ -546,12 +545,12 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 onChange={handleChange}
                 placeholder="e.g. 071 234 5678"
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.whatsapp ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                style={{ background: '#080808', border: `1px solid ${errors.whatsapp ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
             </div>
 
-            {/* Email — full width on mobile */}
+            {/* Email */}
             <div>
               <FieldLabel>Email Address *</FieldLabel>
               <input
@@ -561,7 +560,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 onChange={handleChange}
                 placeholder="sipho@mybusiness.co.za"
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.email ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                style={{ background: '#080808', border: `1px solid ${errors.email ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
             </div>
@@ -574,7 +573,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 value={form.industry}
                 onChange={handleChange}
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground focus:outline-none transition-colors appearance-none"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.industry ? '#ef4444' : 'rgba(201,162,39,0.2)'}`, color: form.industry ? 'var(--foreground)' : 'var(--muted-foreground)' }}
+                style={{ background: '#080808', border: `1px solid ${errors.industry ? '#ef4444' : 'rgba(255,255,255,0.1)'}`, color: form.industry ? 'var(--foreground)' : 'var(--muted-foreground)' }}
               >
                 <option value="" disabled>Select your industry</option>
                 <option value="Beauty & Hair">Beauty &amp; Hair</option>
@@ -603,7 +602,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 onChange={handleChange}
                 placeholder="e.g. www.mybusiness.co.za"
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: '1px solid rgba(201,162,39,0.2)' }}
+                style={{ background: '#080808', border: '1px solid rgba(255,255,255,0.1)' }}
               />
             </div>
 
@@ -617,7 +616,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 onChange={handleChange}
                 placeholder="e.g. @mybusiness on Instagram, TikTok"
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: '1px solid rgba(201,162,39,0.2)' }}
+                style={{ background: '#080808', border: '1px solid rgba(255,255,255,0.1)' }}
               />
             </div>
 
@@ -631,12 +630,12 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 rows={4}
                 placeholder="Tell us what's holding your business back online..."
                 className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors resize-none"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.challenge ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                style={{ background: '#080808', border: `1px solid ${errors.challenge ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.challenge && <p className="text-red-400 text-xs mt-1">{errors.challenge}</p>}
             </div>
 
-            {/* Checkboxes — larger touch targets */}
+            {/* Checkboxes */}
             <div className="space-y-4 pt-2">
               <label className="flex items-start gap-3 cursor-pointer">
                 <div className="relative flex-shrink-0 mt-0.5">
@@ -650,11 +649,11 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                   <div
                     className="w-6 h-6 rounded flex items-center justify-center transition-all"
                     style={{
-                      background: form.isAdult ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#0A0A08',
-                      border: `2px solid ${errors.isAdult ? '#ef4444' : form.isAdult ? '#C9A227' : 'rgba(201,162,39,0.4)'}`,
+                      background: form.isAdult ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#080808',
+                      border: `2px solid ${errors.isAdult ? '#ef4444' : form.isAdult ? '#C9A227' : 'rgba(255,255,255,0.2)'}`,
                     }}
                   >
-                    {form.isAdult && <svg width="12" height="9" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#0A0A08" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    {form.isAdult && <svg width="12" height="9" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#080808" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                   </div>
                 </div>
                 <span className="text-sm text-muted-foreground leading-relaxed">
@@ -675,11 +674,11 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                   <div
                     className="w-6 h-6 rounded flex items-center justify-center transition-all"
                     style={{
-                      background: form.agreeTC ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#0A0A08',
-                      border: `2px solid ${errors.agreeTC ? '#ef4444' : form.agreeTC ? '#C9A227' : 'rgba(201,162,39,0.4)'}`,
+                      background: form.agreeTC ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#080808',
+                      border: `2px solid ${errors.agreeTC ? '#ef4444' : form.agreeTC ? '#C9A227' : 'rgba(255,255,255,0.2)'}`,
                     }}
                   >
-                    {form.agreeTC && <svg width="12" height="9" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#0A0A08" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    {form.agreeTC && <svg width="12" height="9" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#080808" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                   </div>
                 </div>
                 <span className="text-sm text-muted-foreground leading-relaxed">
@@ -700,7 +699,6 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             <button
               type="submit"
               className="btn-gold w-full py-5 rounded-2xl text-sm font-bold uppercase tracking-widest mt-2"
-              style={{ boxShadow: '0 0 30px rgba(201,162,39,0.25)' }}
             >
               📲 SUBMIT ENTRY VIA WHATSAPP
             </button>
@@ -713,7 +711,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── WHY KHULA ── */}
-      <section className="py-14 px-5" style={{ background: 'linear-gradient(180deg, #0A0A08 0%, #0d0c06 100%)' }}>
+      <section className="py-14 px-5" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label block mb-3">About Us</span>
           <h2 className="font-display font-bold text-foreground mb-8" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
@@ -729,7 +727,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
               <div
                 key={item.title}
                 className="flex gap-4 p-4 rounded-xl"
-                style={{ background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)', border: '1px solid rgba(201,162,39,0.15)' }}
+                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}
               >
                 <span className="text-xl font-bold text-gold-gradient flex-shrink-0">{item.icon}</span>
                 <div>
@@ -752,8 +750,8 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             onClick={() => setTcsOpen(!tcsOpen)}
             className="w-full flex items-center justify-between p-5 rounded-2xl text-left transition-all"
             style={{
-              background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-              border: '1px solid rgba(201,162,39,0.2)',
+              background: '#111111',
+              border: '1px solid rgba(255,255,255,0.08)',
             }}
             aria-expanded={tcsOpen}
           >
@@ -768,7 +766,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           {tcsOpen && (
             <div
               className="mt-2 p-5 rounded-2xl text-xs text-muted-foreground leading-relaxed space-y-3"
-              style={{ background: '#141209', border: '1px solid rgba(201,162,39,0.1)' }}
+              style={{ background: '#0d0d0d', border: '1px solid rgba(255,255,255,0.06)' }}
             >
               <p>• Competition runs from 25 August 2026 to 25 September 2026.</p>
               <p>• Entries close at 11:59 PM on 25 September 2026.</p>
@@ -789,7 +787,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-10 px-5" style={{ borderTop: '1px solid rgba(201,162,39,0.1)', background: '#0A0A08' }}>
+      <footer className="py-10 px-5" style={{ borderTop: '1px solid rgba(255,255,255,0.06)', background: '#080808' }}>
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center mb-4">
             <AppLogo size={44} />
@@ -800,11 +798,11 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           </p>
           <p className="text-xs text-muted-foreground mb-4">Digital Solutions for Growing Businesses.</p>
           <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground mb-6">
-            <a href="https://khuladigitalsolutions.co.za/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">khuladigitalsolutions.co.za</a>
-            <a href="https://wa.me/27651085200" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">065 108 5200</a>
-            <a href="https://www.tiktok.com/@khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">TikTok</a>
-            <a href="https://www.instagram.com/khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61593476080822" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Facebook</a>
+            <a href="https://khuladigitalsolutions.co.za/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">khuladigitalsolutions.co.za</a>
+            <a href="https://wa.me/27651085200" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">065 108 5200</a>
+            <a href="https://www.tiktok.com/@khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">TikTok</a>
+            <a href="https://www.instagram.com/khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61593476080822" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Facebook</a>
           </div>
           <p className="text-[10px] text-muted-foreground">
             © 2026 Khula Digital Solutions (PTY) LTD · KwaZulu-Natal, South Africa
@@ -816,11 +814,10 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </footer>
 
       {/* ── STICKY MOBILE CTA ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden px-4 pb-safe-bottom" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)', background: 'linear-gradient(to top, rgba(10,10,8,0.98) 70%, transparent)', paddingTop: '12px' }}>
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden px-4 pb-safe-bottom" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)', background: 'linear-gradient(to top, rgba(8,8,8,0.98) 70%, transparent)', paddingTop: '12px' }}>
         <button
           onClick={scrollToForm}
           className="btn-gold w-full py-4 rounded-2xl text-sm font-bold uppercase tracking-widest"
-          style={{ boxShadow: '0 0 30px rgba(201,162,39,0.3)' }}
         >
           🚀 ENTER NOW — WIN R8,000 WEBSITE
         </button>

@@ -32,7 +32,7 @@ export default function WhyUsSection() {
 
   return (
     <section id="why-us" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
-      <div className="blob-gold absolute w-[500px] h-[500px] bottom-0 left-0 opacity-20 pointer-events-none" />
+      <div className="blob-gold absolute w-[500px] h-[500px] bottom-0 left-0 opacity-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Asymmetric 60/40 split */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">

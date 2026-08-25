@@ -142,16 +142,16 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Atmospheric blobs */}
+      {/* Atmospheric blobs — very subtle */}
       <div
-        className="hero-blob-1 blob-gold animate-blob-1 absolute w-[600px] h-[600px] top-[-100px] left-[-100px] z-0"
+        className="hero-blob-1 blob-gold animate-blob-1 absolute w-[600px] h-[600px] top-[-100px] left-[-100px] z-0 opacity-40"
         style={{ transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)' }} />
       
       <div
-        className="hero-blob-2 blob-amber animate-blob-2 absolute w-[500px] h-[500px] bottom-[-80px] right-[-80px] z-0"
+        className="hero-blob-2 blob-amber animate-blob-2 absolute w-[500px] h-[500px] bottom-[-80px] right-[-80px] z-0 opacity-30"
         style={{ transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)' }} />
       
-      <div className="blob-gold animate-blob-3 absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-50" />
+      <div className="blob-gold animate-blob-3 absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-20" />
 
       {/* Background texture */}
       <div className="absolute inset-0 z-0 opacity-[0.03]"

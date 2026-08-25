@@ -75,7 +75,7 @@ export default function ServicesSection() {
 
   return (
     <section id="services" ref={sectionRef} className="py-20 bg-secondary/30 relative overflow-hidden">
-      <div className="blob-amber absolute w-[500px] h-[500px] bottom-0 left-0 opacity-40 pointer-events-none" />
+      <div className="blob-amber absolute w-[500px] h-[500px] bottom-0 left-0 opacity-20 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
