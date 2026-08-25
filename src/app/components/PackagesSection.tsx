@@ -99,7 +99,7 @@ export default function PackagesSection() {
 
   return (
     <section id="packages" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
-      <div className="blob-gold absolute w-[600px] h-[400px] top-0 right-0 opacity-20 pointer-events-none" />
+      <div className="blob-gold absolute w-[600px] h-[400px] top-0 right-0 opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -115,7 +115,7 @@ export default function PackagesSection() {
 
         {/* ★ MAIN DEAL — Business Study Bundle ★ */}
         <div className="animate-on-scroll opacity-100 animate-fade-in mb-12">
-          <div className="relative rounded-3xl overflow-hidden border-2 border-primary shadow-[0_0_60px_rgba(201,162,39,0.3)] bg-card">
+          <div className="relative rounded-3xl overflow-hidden border border-border shadow-[0_0_40px_rgba(0,0,0,0.5)] bg-card">
             {/* Top badge */}
             <div className="bg-gold-gradient text-primary-foreground text-[10px] font-bold uppercase tracking-widest text-center py-2.5">
               🌟 Best Value — Featured Package Deal

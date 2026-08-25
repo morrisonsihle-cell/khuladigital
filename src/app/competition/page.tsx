@@ -45,18 +45,18 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center">
       <div
-        className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center"
+        className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center"
         style={{
-          background: 'linear-gradient(135deg, #1a1500 0%, #2a2000 100%)',
-          border: '1px solid rgba(201,162,39,0.3)',
-          boxShadow: '0 0 20px rgba(201,162,39,0.08)',
+          background: '#111111',
+          border: '1px solid rgba(255,255,255,0.1)',
+          boxShadow: '0 0 20px rgba(0,0,0,0.4)',
         }}
       >
         <span className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-gold-gradient tabular-nums">
           {String(value).padStart(2, '0')}
         </span>
       </div>
-      <span className="mt-2 text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{label}</span>
+      <span className="mt-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{label}</span>
     </div>
   );
 }
@@ -65,16 +65,16 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
 function PrizeCard({ emoji, title, desc }: { emoji: string; title: string; desc: string }) {
   return (
     <div
-      className="flex items-start gap-3 p-4 rounded-xl transition-all duration-300 hover:scale-[1.02]"
+      className="flex items-start gap-3 p-4 rounded-xl"
       style={{
-        background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-        border: '1px solid rgba(201,162,39,0.15)',
+        background: '#111111',
+        border: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       <span className="text-2xl flex-shrink-0">{emoji}</span>
       <div>
         <div className="text-sm font-semibold text-foreground">{title}</div>
-        <div className="text-xs text-muted-foreground mt-0.5">{desc}</div>
+        <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{desc}</div>
       </div>
     </div>
   );
@@ -85,19 +85,28 @@ function Step({ num, title, desc }: { num: string; title: string; desc: string }
   return (
     <div className="flex gap-4 items-start">
       <div
-        className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-display font-bold text-sm"
+        className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center font-display font-bold text-sm"
         style={{
           background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)',
-          color: '#0A0A08',
+          color: '#080808',
         }}
       >
         {num}
       </div>
-      <div className="pt-1">
+      <div className="pt-1.5">
         <div className="text-sm font-bold uppercase tracking-widest text-foreground">{title}</div>
         <div className="text-xs text-muted-foreground mt-1 leading-relaxed">{desc}</div>
       </div>
     </div>
+  );
+}
+
+// ─── Field Label ─────────────────────────────────────────────────────────────
+function FieldLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <label className="text-xs uppercase tracking-widest text-muted-foreground block mb-2 font-medium">
+      {children}
+    </label>
   );
 }
 
@@ -198,15 +207,15 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
     return (
       <div
         className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center"
-        style={{ background: '#0A0A08' }}
+        style={{ background: '#080808' }}
       >
-        <div className="blob-gold absolute w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none" />
+        <div className="blob-gold absolute w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none" />
         <div className="relative z-10 max-w-md w-full">
           <div
             className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"
             style={{
               background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)',
-              boxShadow: '0 0 40px rgba(201,162,39,0.4)',
+              boxShadow: '0 0 30px rgba(201,162,39,0.25)',
             }}
           >
             🎉
@@ -224,7 +233,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           </button>
           <Link
             href="/"
-            className="block text-center text-xs text-muted-foreground hover:text-primary transition-colors py-3"
+            className="block text-center text-xs text-muted-foreground hover:text-foreground transition-colors py-3"
           >
             ← Return to Khula Digital Solutions
           </Link>
@@ -235,16 +244,20 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
 
   // ─── Main Page ────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: '#0A0A08' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: '#080808' }}>
+
       {/* ── Minimal Nav ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3" style={{ background: 'rgba(10,10,8,0.9)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(201,162,39,0.1)' }}>
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3"
+        style={{ background: 'rgba(8,8,8,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+      >
         <Link href="/" className="flex items-center gap-2">
-          <AppLogo size={36} />
+          <AppLogo size={32} />
           <span className="hidden sm:block text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Khula Digital Solutions</span>
         </Link>
         <button
           onClick={scrollToForm}
-          className="btn-gold px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest"
+          className="btn-gold px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest"
           aria-label="Enter competition"
         >
           🚀 ENTER NOW
@@ -252,68 +265,71 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </nav>
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-20 pb-16 text-center overflow-hidden">
-        {/* Background blobs */}
-        <div className="blob-gold absolute w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 opacity-25 pointer-events-none" />
-        <div className="blob-amber absolute w-[400px] h-[400px] bottom-0 right-0 opacity-30 pointer-events-none" />
+      <section className="relative flex flex-col items-center justify-center px-5 pt-24 pb-10 text-center overflow-hidden" style={{ minHeight: '100svh' }}>
+        {/* Background blobs — very subtle */}
+        <div className="blob-gold absolute w-[500px] h-[500px] top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 opacity-10 pointer-events-none" />
+        <div className="blob-amber absolute w-[300px] h-[300px] bottom-0 right-0 opacity-10 pointer-events-none" />
+        {/* Grid lines — white, very subtle */}
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-        {/* Grid lines */}
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(201,162,39,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,162,39,0.04) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-[10px] uppercase tracking-[0.3em] font-medium" style={{ background: 'rgba(201,162,39,0.1)', border: '1px solid rgba(201,162,39,0.25)', color: '#C9A227' }}>
-            🏆 Competition Open · Entries Close 25 September 2026
+        <div className="relative z-10 max-w-4xl mx-auto w-full">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-[10px] uppercase tracking-[0.25em] font-medium" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#C9A227' }}>
+            🏆 Competition Open · Closes 25 Sep 2026
           </div>
 
-          <h1 className="font-display font-bold leading-none mb-4" style={{ fontSize: 'clamp(2.2rem, 9vw, 6rem)' }}>
-            <span className="text-gold-gradient block">5 BUSINESSES.</span>
-            <span className="text-gold-gradient block">5 WEBSITES.</span>
-            <span className="text-foreground block" style={{ fontSize: 'clamp(1.4rem, 5vw, 3.5rem)' }}>R40,000 TOTAL VALUE.</span>
+          {/* Main headline */}
+          <h1 className="font-display font-bold leading-none mb-4" style={{ fontSize: 'clamp(2.4rem, 10vw, 6rem)' }}>
+            <span className="text-foreground block">5 BUSINESSES.</span>
+            <span className="text-foreground block">5 WEBSITES.</span>
+            <span className="text-gold-gradient block" style={{ fontSize: 'clamp(1.3rem, 5vw, 3.5rem)' }}>R40,000 TOTAL VALUE.</span>
           </h1>
 
-          <div className="mt-4 mb-6">
+          {/* Sub-headline */}
+          <div className="mt-3 mb-6">
             <span
-              className="inline-block font-display font-bold uppercase tracking-widest px-6 py-3 rounded-2xl"
+              className="inline-block font-display font-bold uppercase tracking-widest px-5 py-2.5 rounded-xl"
               style={{
-                fontSize: 'clamp(1rem, 3vw, 1.6rem)',
+                fontSize: 'clamp(0.85rem, 2.8vw, 1.5rem)',
                 background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)',
-                color: '#0A0A08',
-                boxShadow: '0 0 30px rgba(201,162,39,0.35)',
+                color: '#080808',
+                boxShadow: '0 0 20px rgba(201,162,39,0.2)',
               }}
             >
               WIN AN E-COMMERCE WEBSITE WORTH R8,000!
             </span>
           </div>
 
-          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-10">
-            Khula Digital Solutions is giving <span className="text-foreground font-medium">5 local businesses</span> the opportunity to take their business online with a professional E-Commerce Website designed to help them attract customers, showcase their products and grow.
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-xl mx-auto mb-8">
+            Khula Digital Solutions is giving <span className="text-foreground font-medium">5 local businesses</span> the opportunity to take their business online with a professional E-Commerce Website.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* CTAs — stacked on mobile */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={scrollToForm}
-              className="btn-gold px-10 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest"
-              style={{ boxShadow: '0 0 30px rgba(201,162,39,0.3)' }}
+              className="btn-gold px-8 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest w-full sm:w-auto"
+              style={{ boxShadow: '0 0 20px rgba(201,162,39,0.2)' }}
             >
               🚀 ENTER NOW
             </button>
             <a
               href="#prize"
-              className="btn-outline-gold px-10 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest"
+              className="btn-outline-gold px-8 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest w-full sm:w-auto text-center"
             >
               SEE WHAT YOU CAN WIN
             </a>
           </div>
 
-          {/* Mock device visual */}
-          <div className="mt-14 relative mx-auto max-w-lg">
+          {/* Mock device — hidden on small mobile, shown from sm up */}
+          <div className="hidden sm:block mt-12 relative mx-auto max-w-lg">
             <div
               className="rounded-2xl overflow-hidden mx-auto"
               style={{
-                background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-                border: '1px solid rgba(201,162,39,0.2)',
-                boxShadow: '0 0 60px rgba(201,162,39,0.12)',
-                padding: '1.5rem',
+                background: '#111111',
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: '0 0 40px rgba(0,0,0,0.5)',
+                padding: '1.25rem',
               }}
             >
               {/* Browser chrome */}
@@ -321,32 +337,32 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-                <div className="flex-1 ml-2 h-5 rounded-md flex items-center px-3" style={{ background: 'rgba(201,162,39,0.08)', border: '1px solid rgba(201,162,39,0.15)' }}>
+                <div className="flex-1 ml-2 h-5 rounded-md flex items-center px-3" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
                   <span className="text-[9px] text-muted-foreground">yourbusiness.co.za</span>
                 </div>
               </div>
               {/* Mock website */}
-              <div className="rounded-xl overflow-hidden" style={{ background: '#0d0d0b' }}>
-                <div className="h-8 flex items-center px-4 gap-3" style={{ background: 'rgba(201,162,39,0.06)', borderBottom: '1px solid rgba(201,162,39,0.1)' }}>
+              <div className="rounded-xl overflow-hidden" style={{ background: '#0d0d0d' }}>
+                <div className="h-8 flex items-center px-4 gap-3" style={{ background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                   <div className="w-16 h-2 rounded-full bg-gold-gradient opacity-60" />
                   <div className="flex gap-2 ml-auto">
-                    {[1,2,3].map(i => <div key={i} className="w-8 h-1.5 rounded-full" style={{ background: 'rgba(201,162,39,0.2)' }} />)}
+                    {[1,2,3].map(i => <div key={i} className="w-8 h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }} />)}
                   </div>
                 </div>
                 <div className="p-4 space-y-3">
-                  <div className="h-20 rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(201,162,39,0.1), rgba(201,162,39,0.05))', border: '1px solid rgba(201,162,39,0.1)' }}>
+                  <div className="h-20 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
                     <div className="p-3 space-y-1.5">
                       <div className="w-24 h-2 rounded-full bg-gold-gradient opacity-50" />
-                      <div className="w-32 h-1.5 rounded-full" style={{ background: 'rgba(201,162,39,0.2)' }} />
+                      <div className="w-32 h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }} />
                       <div className="w-16 h-5 rounded-lg mt-2 bg-gold-gradient opacity-70" />
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {[1,2,3].map(i => (
-                      <div key={i} className="h-14 rounded-lg" style={{ background: 'rgba(201,162,39,0.06)', border: '1px solid rgba(201,162,39,0.1)' }}>
+                      <div key={i} className="h-14 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                         <div className="p-2 space-y-1">
-                          <div className="w-full h-6 rounded" style={{ background: 'rgba(201,162,39,0.1)' }} />
-                          <div className="w-3/4 h-1 rounded-full" style={{ background: 'rgba(201,162,39,0.15)' }} />
+                          <div className="w-full h-6 rounded" style={{ background: 'rgba(255,255,255,0.05)' }} />
+                          <div className="w-3/4 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }} />
                         </div>
                       </div>
                     ))}
@@ -359,51 +375,51 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── COUNTDOWN ── */}
-      <section className="py-16 px-5 relative" style={{ background: 'linear-gradient(180deg, #0A0A08 0%, #0f0e06 100%)' }}>
+      <section className="py-12 px-5 relative" style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-3xl mx-auto text-center">
-          <span className="section-label block mb-3">Competition Closes In</span>
+          <span className="section-label block mb-4">Competition Closes In</span>
           {countdown.closed ? (
             <div
               className="inline-block font-display font-bold text-3xl sm:text-4xl uppercase tracking-widest px-8 py-4 rounded-2xl"
-              style={{ background: 'rgba(201,162,39,0.1)', border: '1px solid rgba(201,162,39,0.3)', color: '#C9A227' }}
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#C9A227' }}
             >
               ENTRIES CLOSED
             </div>
           ) : (
-            <div className="flex items-center justify-center gap-3 sm:gap-5">
+            <div className="flex items-center justify-center gap-2 sm:gap-4">
               <CountdownUnit value={countdown.days} label="Days" />
-              <span className="font-display text-3xl text-gold-gradient font-bold mb-6">:</span>
+              <span className="font-display text-2xl sm:text-3xl text-gold-gradient font-bold mb-5">:</span>
               <CountdownUnit value={countdown.hours} label="Hours" />
-              <span className="font-display text-3xl text-gold-gradient font-bold mb-6">:</span>
-              <CountdownUnit value={countdown.minutes} label="Minutes" />
-              <span className="font-display text-3xl text-gold-gradient font-bold mb-6">:</span>
-              <CountdownUnit value={countdown.seconds} label="Seconds" />
+              <span className="font-display text-2xl sm:text-3xl text-gold-gradient font-bold mb-5">:</span>
+              <CountdownUnit value={countdown.minutes} label="Mins" />
+              <span className="font-display text-2xl sm:text-3xl text-gold-gradient font-bold mb-5">:</span>
+              <CountdownUnit value={countdown.seconds} label="Secs" />
             </div>
           )}
-          <p className="text-xs text-muted-foreground mt-6 tracking-widest uppercase">
-            Entries close 25 September 2026 at 11:59 PM · Winners announced 30 September 2026
+          <p className="text-xs text-muted-foreground mt-5 tracking-widest uppercase">
+            Closes 25 Sep 2026 at 11:59 PM · Winners announced 30 Sep 2026
           </p>
         </div>
       </section>
 
       {/* ── PRIZE ── */}
-      <section id="prize" className="py-20 px-5 relative overflow-hidden">
-        <div className="blob-gold absolute w-[500px] h-[500px] top-0 right-0 opacity-15 pointer-events-none" />
+      <section id="prize" className="py-14 px-5 relative overflow-hidden">
+        <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-8 pointer-events-none" />
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <span className="section-label block mb-3">The Prize</span>
             <h2 className="font-display font-bold text-foreground" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
               WHAT YOU COULD WIN
             </h2>
             <div className="mt-4 inline-block">
               <span
-                className="font-display font-bold text-2xl sm:text-3xl px-6 py-2 rounded-xl"
-                style={{ background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)', color: '#0A0A08' }}
+                className="font-display font-bold text-xl sm:text-3xl px-5 py-2 rounded-xl"
+                style={{ background: 'linear-gradient(135deg, #8B6914, #C9A227, #D4AF37)', color: '#080808' }}
               >
                 R8,000 WEBSITE PACKAGE
               </span>
             </div>
-            <p className="text-muted-foreground text-sm mt-5 max-w-xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-sm mt-4 max-w-xl mx-auto leading-relaxed">
               Each of the <span className="text-foreground font-medium">5 selected winners</span> receives a professional E-Commerce Website package valued at R8,000.
             </p>
           </div>
@@ -421,14 +437,13 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
 
           {/* Key message */}
           <div
-            className="text-center py-6 px-6 rounded-2xl"
+            className="text-center py-5 px-5 rounded-2xl"
             style={{
-              background: 'linear-gradient(135deg, rgba(201,162,39,0.12), rgba(201,162,39,0.06))',
+              background: '#111111',
               border: '1px solid rgba(201,162,39,0.3)',
-              boxShadow: '0 0 30px rgba(201,162,39,0.08)',
             }}
           >
-            <p className="font-display font-bold text-xl sm:text-2xl text-gold-gradient uppercase tracking-widest">
+            <p className="font-display font-bold text-lg sm:text-2xl text-gold-gradient uppercase tracking-widest">
               WINNERS PAY ONLY FOR THEIR DOMAIN.
             </p>
             <p className="text-xs text-muted-foreground mt-2">No website development costs. No hosting fees. Just your domain.</p>
@@ -437,27 +452,27 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── HOW TO ENTER ── */}
-      <section className="py-20 px-5" style={{ background: 'linear-gradient(180deg, #0A0A08 0%, #0d0c06 100%)' }}>
+      <section className="py-14 px-5" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <span className="section-label block mb-3">Simple Process</span>
             <h2 className="font-display font-bold text-foreground" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
               HOW TO ENTER
             </h2>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-5">
             <Step num="1" title="WATCH" desc="Discover the competition through Khula Digital Solutions on TikTok." />
-            <div className="w-px h-4 bg-gradient-to-b from-primary/40 to-transparent ml-5" />
+            <div className="w-px h-3 bg-gradient-to-b from-primary/40 to-transparent ml-5" />
             <Step num="2" title="VISIT" desc="Visit the official competition page at khuladigitalsolutions.co.za/competition" />
-            <div className="w-px h-4 bg-gradient-to-b from-primary/40 to-transparent ml-5" />
+            <div className="w-px h-3 bg-gradient-to-b from-primary/40 to-transparent ml-5" />
             <Step num="3" title="COMPLETE" desc="Complete the business entry form with your details and biggest digital challenge." />
-            <div className="w-px h-4 bg-gradient-to-b from-primary/40 to-transparent ml-5" />
+            <div className="w-px h-3 bg-gradient-to-b from-primary/40 to-transparent ml-5" />
             <Step num="4" title="SUBMIT" desc="Submit your entry through WhatsApp to complete your application." />
           </div>
           <div className="mt-10 text-center">
             <button
               onClick={scrollToForm}
-              className="btn-gold px-10 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest"
+              className="btn-gold px-10 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest w-full sm:w-auto"
             >
               🚀 ENTER NOW
             </button>
@@ -466,10 +481,11 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── ENTRY FORM ── */}
-      <section id="entry-form" ref={formRef} className="py-20 px-5 relative overflow-hidden">
-        <div className="blob-gold absolute w-[400px] h-[400px] bottom-0 left-0 opacity-15 pointer-events-none" />
-        <div className="max-w-2xl mx-auto relative z-10">
-          <div className="text-center mb-10">
+      {/* Extra bottom padding so sticky CTA doesn't overlap last field */}
+      <section id="entry-form" ref={formRef} className="py-14 px-4 pb-32 md:pb-14 relative overflow-hidden">
+        <div className="blob-gold absolute w-[400px] h-[400px] bottom-0 left-0 opacity-8 pointer-events-none" />
+        <div className="max-w-lg mx-auto relative z-10">
+          <div className="text-center mb-8">
             <span className="section-label block mb-3">Apply Now</span>
             <h2 className="font-display font-bold text-foreground" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
               ENTER THE COMPETITION
@@ -482,82 +498,82 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           <form
             onSubmit={handleSubmit}
             noValidate
-            className="rounded-2xl p-6 sm:p-8 space-y-5"
+            className="rounded-2xl p-5 sm:p-7 space-y-5"
             style={{
-              background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-              border: '1px solid rgba(201,162,39,0.2)',
-              boxShadow: '0 0 60px rgba(201,162,39,0.06)',
+              background: '#111111',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0 0 40px rgba(0,0,0,0.4)',
             }}
           >
             {/* Business Name */}
             <div>
-              <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Business Name *</label>
+              <FieldLabel>Business Name *</FieldLabel>
               <input
                 type="text"
                 name="businessName"
                 value={form.businessName}
                 onChange={handleChange}
                 placeholder="e.g. Sipho's Fashion Store"
-                className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.businessName ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
+                style={{ background: '#080808', border: `1px solid ${errors.businessName ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.businessName && <p className="text-red-400 text-xs mt-1">{errors.businessName}</p>}
             </div>
 
             {/* Owner Name */}
             <div>
-              <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Owner / Representative Name *</label>
+              <FieldLabel>Owner / Representative Name *</FieldLabel>
               <input
                 type="text"
                 name="ownerName"
                 value={form.ownerName}
                 onChange={handleChange}
                 placeholder="e.g. Sipho Dlamini"
-                className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.ownerName ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
+                style={{ background: '#080808', border: `1px solid ${errors.ownerName ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.ownerName && <p className="text-red-400 text-xs mt-1">{errors.ownerName}</p>}
             </div>
 
-            {/* WhatsApp + Email */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">WhatsApp Number *</label>
-                <input
-                  type="tel"
-                  name="whatsapp"
-                  value={form.whatsapp}
-                  onChange={handleChange}
-                  placeholder="e.g. 071 234 5678"
-                  className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                  style={{ background: '#0A0A08', border: `1px solid ${errors.whatsapp ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
-                />
-                {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
-              </div>
-              <div>
-                <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="sipho@mybusiness.co.za"
-                  className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                  style={{ background: '#0A0A08', border: `1px solid ${errors.email ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
-                />
-                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
-              </div>
+            {/* WhatsApp */}
+            <div>
+              <FieldLabel>WhatsApp Number *</FieldLabel>
+              <input
+                type="tel"
+                name="whatsapp"
+                value={form.whatsapp}
+                onChange={handleChange}
+                placeholder="e.g. 071 234 5678"
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
+                style={{ background: '#080808', border: `1px solid ${errors.whatsapp ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
+              />
+              {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
+            </div>
+
+            {/* Email */}
+            <div>
+              <FieldLabel>Email Address *</FieldLabel>
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="sipho@mybusiness.co.za"
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
+                style={{ background: '#080808', border: `1px solid ${errors.email ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
+              />
+              {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
             </div>
 
             {/* Industry */}
             <div>
-              <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Business Industry *</label>
+              <FieldLabel>Business Industry *</FieldLabel>
               <select
                 name="industry"
                 value={form.industry}
                 onChange={handleChange}
-                className="w-full rounded-xl px-4 py-4 text-sm text-foreground focus:outline-none transition-colors appearance-none"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.industry ? '#ef4444' : 'rgba(201,162,39,0.2)'}`, color: form.industry ? 'var(--foreground)' : 'var(--muted-foreground)' }}
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground focus:outline-none transition-colors appearance-none"
+                style={{ background: '#080808', border: `1px solid ${errors.industry ? '#ef4444' : 'rgba(255,255,255,0.1)'}`, color: form.industry ? 'var(--foreground)' : 'var(--muted-foreground)' }}
               >
                 <option value="" disabled>Select your industry</option>
                 <option value="Beauty & Hair">Beauty &amp; Hair</option>
@@ -578,50 +594,50 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
 
             {/* Existing Website */}
             <div>
-              <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Existing Website <span className="text-muted-foreground/50">(optional)</span></label>
+              <FieldLabel>Existing Website <span className="text-muted-foreground/50 normal-case">(optional)</span></FieldLabel>
               <input
                 type="url"
                 name="existingWebsite"
                 value={form.existingWebsite}
                 onChange={handleChange}
                 placeholder="e.g. www.mybusiness.co.za"
-                className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: '1px solid rgba(201,162,39,0.2)' }}
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
+                style={{ background: '#080808', border: '1px solid rgba(255,255,255,0.1)' }}
               />
             </div>
 
             {/* Social Media */}
             <div>
-              <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Social Media Pages <span className="text-muted-foreground/50">(optional)</span></label>
+              <FieldLabel>Social Media Pages <span className="text-muted-foreground/50 normal-case">(optional)</span></FieldLabel>
               <input
                 type="text"
                 name="socialMedia"
                 value={form.socialMedia}
                 onChange={handleChange}
                 placeholder="e.g. @mybusiness on Instagram, TikTok"
-                className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
-                style={{ background: '#0A0A08', border: '1px solid rgba(201,162,39,0.2)' }}
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors"
+                style={{ background: '#080808', border: '1px solid rgba(255,255,255,0.1)' }}
               />
             </div>
 
             {/* Biggest Challenge */}
             <div>
-              <label className="text-[10px] uppercase tracking-widest text-muted-foreground block mb-2">Biggest Digital Challenge *</label>
+              <FieldLabel>Biggest Digital Challenge *</FieldLabel>
               <textarea
                 name="challenge"
                 value={form.challenge}
                 onChange={handleChange}
                 rows={4}
                 placeholder="Tell us what's holding your business back online..."
-                className="w-full rounded-xl px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors resize-none"
-                style={{ background: '#0A0A08', border: `1px solid ${errors.challenge ? '#ef4444' : 'rgba(201,162,39,0.2)'}` }}
+                className="w-full rounded-xl px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors resize-none"
+                style={{ background: '#080808', border: `1px solid ${errors.challenge ? '#ef4444' : 'rgba(255,255,255,0.1)'}` }}
               />
               {errors.challenge && <p className="text-red-400 text-xs mt-1">{errors.challenge}</p>}
             </div>
 
             {/* Checkboxes */}
             <div className="space-y-4 pt-2">
-              <label className="flex items-start gap-3 cursor-pointer group">
+              <label className="flex items-start gap-3 cursor-pointer">
                 <div className="relative flex-shrink-0 mt-0.5">
                   <input
                     type="checkbox"
@@ -631,22 +647,22 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                     className="sr-only"
                   />
                   <div
-                    className="w-5 h-5 rounded flex items-center justify-center transition-all"
+                    className="w-6 h-6 rounded flex items-center justify-center transition-all"
                     style={{
-                      background: form.isAdult ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#0A0A08',
-                      border: `1px solid ${errors.isAdult ? '#ef4444' : form.isAdult ? '#C9A227' : 'rgba(201,162,39,0.3)'}`,
+                      background: form.isAdult ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#080808',
+                      border: `2px solid ${errors.isAdult ? '#ef4444' : form.isAdult ? '#C9A227' : 'rgba(255,255,255,0.2)'}`,
                     }}
                   >
-                    {form.isAdult && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#0A0A08" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    {form.isAdult && <svg width="12" height="9" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#080808" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                   </div>
                 </div>
-                <span className="text-xs text-muted-foreground leading-relaxed">
+                <span className="text-sm text-muted-foreground leading-relaxed">
                   I confirm that I am <span className="text-foreground font-medium">18 years or older</span> and eligible to enter this competition.
                 </span>
               </label>
-              {errors.isAdult && <p className="text-red-400 text-xs -mt-2 ml-8">{errors.isAdult}</p>}
+              {errors.isAdult && <p className="text-red-400 text-xs -mt-2 ml-9">{errors.isAdult}</p>}
 
-              <label className="flex items-start gap-3 cursor-pointer group">
+              <label className="flex items-start gap-3 cursor-pointer">
                 <div className="relative flex-shrink-0 mt-0.5">
                   <input
                     type="checkbox"
@@ -656,16 +672,16 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                     className="sr-only"
                   />
                   <div
-                    className="w-5 h-5 rounded flex items-center justify-center transition-all"
+                    className="w-6 h-6 rounded flex items-center justify-center transition-all"
                     style={{
-                      background: form.agreeTC ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#0A0A08',
-                      border: `1px solid ${errors.agreeTC ? '#ef4444' : form.agreeTC ? '#C9A227' : 'rgba(201,162,39,0.3)'}`,
+                      background: form.agreeTC ? 'linear-gradient(135deg, #8B6914, #C9A227)' : '#080808',
+                      border: `2px solid ${errors.agreeTC ? '#ef4444' : form.agreeTC ? '#C9A227' : 'rgba(255,255,255,0.2)'}`,
                     }}
                   >
-                    {form.agreeTC && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#0A0A08" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    {form.agreeTC && <svg width="12" height="9" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#080808" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                   </div>
                 </div>
-                <span className="text-xs text-muted-foreground leading-relaxed">
+                <span className="text-sm text-muted-foreground leading-relaxed">
                   I have read and agree to the{' '}
                   <button
                     type="button"
@@ -677,18 +693,17 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
                   .
                 </span>
               </label>
-              {errors.agreeTC && <p className="text-red-400 text-xs -mt-2 ml-8">{errors.agreeTC}</p>}
+              {errors.agreeTC && <p className="text-red-400 text-xs -mt-2 ml-9">{errors.agreeTC}</p>}
             </div>
 
             <button
               type="submit"
               className="btn-gold w-full py-5 rounded-2xl text-sm font-bold uppercase tracking-widest mt-2"
-              style={{ boxShadow: '0 0 30px rgba(201,162,39,0.25)' }}
             >
               📲 SUBMIT ENTRY VIA WHATSAPP
             </button>
 
-            <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
+            <p className="text-xs text-muted-foreground text-center leading-relaxed">
               Your entry will open in WhatsApp. Send the pre-filled message to complete your submission.
             </p>
           </form>
@@ -696,13 +711,13 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── WHY KHULA ── */}
-      <section className="py-20 px-5" style={{ background: 'linear-gradient(180deg, #0A0A08 0%, #0d0c06 100%)' }}>
+      <section className="py-14 px-5" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-3xl mx-auto text-center">
           <span className="section-label block mb-3">About Us</span>
-          <h2 className="font-display font-bold text-foreground mb-10" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
+          <h2 className="font-display font-bold text-foreground mb-8" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
             WHY KHULA DIGITAL SOLUTIONS?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left mb-8">
             {[
               { icon: '✓', title: 'Professional Digital Solutions', desc: 'We build websites and digital tools that actually work for your business.' },
               { icon: '✓', title: 'Mobile-First Websites', desc: 'Every website we build is designed for mobile users first.' },
@@ -711,8 +726,8 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
             ].map((item) => (
               <div
                 key={item.title}
-                className="flex gap-4 p-5 rounded-xl"
-                style={{ background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)', border: '1px solid rgba(201,162,39,0.15)' }}
+                className="flex gap-4 p-4 rounded-xl"
+                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}
               >
                 <span className="text-xl font-bold text-gold-gradient flex-shrink-0">{item.icon}</span>
                 <div>
@@ -729,20 +744,20 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── T&Cs ACCORDION ── */}
-      <section className="py-16 px-5">
+      <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
           <button
             onClick={() => setTcsOpen(!tcsOpen)}
             className="w-full flex items-center justify-between p-5 rounded-2xl text-left transition-all"
             style={{
-              background: 'linear-gradient(135deg, #141209 0%, #1a1500 100%)',
-              border: '1px solid rgba(201,162,39,0.2)',
+              background: '#111111',
+              border: '1px solid rgba(255,255,255,0.08)',
             }}
             aria-expanded={tcsOpen}
           >
             <span className="text-sm font-bold uppercase tracking-widest text-foreground">Competition Terms &amp; Conditions</span>
             <span
-              className="text-primary transition-transform duration-300 text-lg font-bold"
+              className="text-primary transition-transform duration-300 text-lg font-bold flex-shrink-0 ml-3"
               style={{ transform: tcsOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
             >
               +
@@ -750,8 +765,8 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           </button>
           {tcsOpen && (
             <div
-              className="mt-2 p-6 rounded-2xl text-xs text-muted-foreground leading-relaxed space-y-3"
-              style={{ background: '#141209', border: '1px solid rgba(201,162,39,0.1)' }}
+              className="mt-2 p-5 rounded-2xl text-xs text-muted-foreground leading-relaxed space-y-3"
+              style={{ background: '#0d0d0d', border: '1px solid rgba(255,255,255,0.06)' }}
             >
               <p>• Competition runs from 25 August 2026 to 25 September 2026.</p>
               <p>• Entries close at 11:59 PM on 25 September 2026.</p>
@@ -772,10 +787,10 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-12 px-5" style={{ borderTop: '1px solid rgba(201,162,39,0.1)', background: '#0A0A08' }}>
+      <footer className="py-10 px-5" style={{ borderTop: '1px solid rgba(255,255,255,0.06)', background: '#080808' }}>
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center mb-4">
-            <AppLogo size={48} />
+            <AppLogo size={44} />
           </div>
           <p className="font-display font-bold text-sm tracking-widest mb-1">
             <span className="text-gold-gradient">KHULA DIGITAL </span>
@@ -783,11 +798,11 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
           </p>
           <p className="text-xs text-muted-foreground mb-4">Digital Solutions for Growing Businesses.</p>
           <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground mb-6">
-            <a href="https://khuladigitalsolutions.co.za/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">khuladigitalsolutions.co.za</a>
-            <a href="https://wa.me/27651085200" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">065 108 5200</a>
-            <a href="https://www.tiktok.com/@khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">TikTok</a>
-            <a href="https://www.instagram.com/khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61593476080822" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Facebook</a>
+            <a href="https://khuladigitalsolutions.co.za/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">khuladigitalsolutions.co.za</a>
+            <a href="https://wa.me/27651085200" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">065 108 5200</a>
+            <a href="https://www.tiktok.com/@khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">TikTok</a>
+            <a href="https://www.instagram.com/khuladigitalsolutions" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61593476080822" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Facebook</a>
           </div>
           <p className="text-[10px] text-muted-foreground">
             © 2026 Khula Digital Solutions (PTY) LTD · KwaZulu-Natal, South Africa
@@ -799,11 +814,10 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
       </footer>
 
       {/* ── STICKY MOBILE CTA ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden px-4 pb-4 pt-2" style={{ background: 'linear-gradient(to top, rgba(10,10,8,0.98) 60%, transparent)' }}>
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden px-4 pb-safe-bottom" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)', background: 'linear-gradient(to top, rgba(8,8,8,0.98) 70%, transparent)', paddingTop: '12px' }}>
         <button
           onClick={scrollToForm}
           className="btn-gold w-full py-4 rounded-2xl text-sm font-bold uppercase tracking-widest"
-          style={{ boxShadow: '0 0 30px rgba(201,162,39,0.3)' }}
         >
           🚀 ENTER NOW — WIN R8,000 WEBSITE
         </button>
@@ -816,7 +830,7 @@ I confirm that I am 18 years or older and agree to the Competition Terms & Condi
         rel="noopener noreferrer"
         aria-label="WhatsApp Us"
         onClick={() => trackEvent('competition_whatsapp_click')}
-        className="fixed bottom-24 right-5 md:bottom-6 md:right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+        className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
         style={{ backgroundColor: '#25D366' }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" fill="white">

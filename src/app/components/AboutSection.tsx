@@ -78,7 +78,7 @@ export default function AboutSection() {
   return (
     <section id="about" ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
       {/* Subtle blob */}
-      <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-30 pointer-events-none" />
+      <div className="blob-gold absolute w-[400px] h-[400px] top-0 right-0 opacity-15 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}

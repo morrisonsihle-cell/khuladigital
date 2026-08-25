@@ -57,7 +57,7 @@ export default function ProcessSection() {
 
   return (
     <section id="process" ref={sectionRef} className="py-20 bg-secondary/30 relative overflow-hidden">
-      <div className="blob-amber absolute w-[400px] h-[400px] top-0 right-0 opacity-30 pointer-events-none" />
+      <div className="blob-amber absolute w-[400px] h-[400px] top-0 right-0 opacity-15 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}

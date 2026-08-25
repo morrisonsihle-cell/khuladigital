@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #0A0A08;
-  --foreground: #F5F0E8;
+  --background: #080808;
+  --foreground: #F0F0F0;
   --primary: #C9A227;
-  --primary-foreground: #0A0A08;
-  --secondary: #1C1A0E;
-  --secondary-foreground: #F5F0E8;
+  --primary-foreground: #080808;
+  --secondary: #141414;
+  --secondary-foreground: #F0F0F0;
   --accent: #D4AF37;
-  --accent-foreground: #0A0A08;
-  --muted: #2A2410;
-  --muted-foreground: #8A7A50;
-  --card: #141209;
-  --card-foreground: #F5F0E8;
-  --border: #2E2710;
-  --input: #1C1A0E;
+  --accent-foreground: #080808;
+  --muted: #222222;
+  --muted-foreground: #888888;
+  --card: #101010;
+  --card-foreground: #F0F0F0;
+  --border: #242424;
+  --input: #141414;
   --ring: #C9A227;
   --radius: 0.5rem;
   --font-sans: var(--font-dm-sans), sans-serif;
@@ -98,7 +98,7 @@
   .grid-overlay-line {
     width: 1px;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(201, 162, 39, 0.08), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.04), transparent);
   }
 
   .image-zoom {
@@ -153,7 +153,7 @@
 
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(201, 162, 39, 0.12);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   }
 
   .btn-gold {
@@ -188,14 +188,14 @@
   }
 
   .blob-gold {
-    background: radial-gradient(ellipse, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
     filter: blur(60px);
     border-radius: 50%;
     pointer-events: none;
   }
 
   .blob-amber {
-    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
     filter: blur(80px);
     border-radius: 50%;
     pointer-events: none;
