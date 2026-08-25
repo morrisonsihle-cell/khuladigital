@@ -81,6 +81,7 @@ export default function Footer() {
             <a href="#packages" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Packages</a>
             <a href="#process" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Process</a>
             <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+            <a href="/competition" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">🏆 Competition</a>
           </div>
         </div>
 

@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Packages', href: '#packages' },
   { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
+  { label: '🏆 Competition', href: '/competition' },
 ];
 
 export default function Header() {
@@ -50,13 +51,23 @@ export default function Header() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks?.map((link) => (
-              <a
-                key={link?.label}
-                href={link?.href}
-                className="text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                {link?.label}
-              </a>
+              link?.href?.startsWith('/') ? (
+                <Link
+                  key={link?.label}
+                  href={link?.href}
+                  className="text-xs font-medium uppercase tracking-widest text-primary hover:text-primary/80 transition-colors duration-200"
+                >
+                  {link?.label}
+                </Link>
+              ) : (
+                <a
+                  key={link?.label}
+                  href={link?.href}
+                  className="text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-200"
+                >
+                  {link?.label}
+                </a>
+              )
             ))}
           </div>
 
@@ -103,15 +114,27 @@ export default function Header() {
         <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full gap-8">
           {navLinks?.map((link, i) => (
-            <a
-              key={link?.label}
-              href={link?.href}
-              onClick={handleNavClick}
-              className="font-display text-3xl font-light text-foreground hover:text-primary transition-colors duration-200"
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              {link?.label}
-            </a>
+            link?.href?.startsWith('/') ? (
+              <Link
+                key={link?.label}
+                href={link?.href}
+                onClick={handleNavClick}
+                className="font-display text-3xl font-light text-primary hover:text-primary/80 transition-colors duration-200"
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                {link?.label}
+              </Link>
+            ) : (
+              <a
+                key={link?.label}
+                href={link?.href}
+                onClick={handleNavClick}
+                className="font-display text-3xl font-light text-foreground hover:text-primary transition-colors duration-200"
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                {link?.label}
+              </a>
+            )
           ))}
           <a
             href="#contact"
