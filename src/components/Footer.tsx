@@ -33,66 +33,56 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Arc Browser Split Pattern */}
+    <footer className="border-t-2 border-arcade-coin bg-arcade-canvas">
+      <div className="max-w-7xl mx-auto px-6 pt-14 pb-24">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
-          {/* Left: Logo + Tagline */}
           <div className="flex flex-col gap-4 max-w-xs">
             <div className="flex items-center gap-3">
-              <AppLogo size={56} />
+              <AppLogo size={52} className="flex-shrink-0" />
               <div className="flex flex-col">
-                <span className="font-display font-bold text-sm tracking-widest leading-none">
-                  <span className="text-gold-gradient">KHULA DIGITAL </span><span className="text-black text-xs">SOLUTIONS</span>
+                <span className="font-pixel text-[10px] text-foreground leading-snug">
+                  KHULA <span className="text-arcade-coin">DIGITAL SOLUTIONS</span>
                 </span>
-                <span className="text-[8px] uppercase tracking-[0.35em] text-muted-foreground leading-none mt-0.5">
-                  (PTY) LTD
-                </span>
+                <span className="font-pixel text-[8px] text-muted-foreground mt-1.5">(PTY) LTD</span>
               </div>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              We don&apos;t just build websites,{' '}
-              <span className="text-primary font-medium">we help businesses grow.</span>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              We don&apos;t just build websites, <span className="text-arcade-coin font-semibold">we help businesses grow.</span>
             </p>
-            <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
-              Growing Businesses Online
-            </p>
-            {/* Social Media Links */}
+            <p className="font-terminal text-lg text-arcade-green">GROWING BUSINESSES ONLINE</p>
             <div className="flex items-center gap-3 mt-1">
-              {socialLinks?.map((social) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={social?.label}
-                  href={social?.href}
+                  key={social.label}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Follow us on ${social?.label}`}
-                  className="w-9 h-9 rounded-xl border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-200"
+                  aria-label={`Follow us on ${social.label}`}
+                  className="w-10 h-10 border-2 border-border flex items-center justify-center text-muted-foreground hover:text-arcade-ink hover:bg-arcade-coin hover:border-arcade-ink transition-colors"
                 >
-                  {social?.icon}
+                  {social.icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right: Links */}
-          <div className="flex flex-wrap gap-x-10 gap-y-3">
-            <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#services" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Services</a>
-            <a href="#packages" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Packages</a>
-            <a href="#process" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Process</a>
-            <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-            <a href="/competition" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">🏆 Competition</a>
-          </div>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3">
+            <a href="#services" className="font-pixel text-[9px] uppercase text-muted-foreground hover:text-arcade-coin transition-colors">// Services</a>
+            <a href="#packages" className="font-pixel text-[9px] uppercase text-muted-foreground hover:text-arcade-coin transition-colors">// Packages</a>
+            <a href="#process" className="font-pixel text-[9px] uppercase text-muted-foreground hover:text-arcade-coin transition-colors">// Workflow</a>
+            <a href="#about" className="font-pixel text-[9px] uppercase text-muted-foreground hover:text-arcade-coin transition-colors">// About</a>
+            <a href="#contact" className="font-pixel text-[9px] uppercase text-muted-foreground hover:text-arcade-coin transition-colors">// Contact</a>
+          </nav>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">
+        <div className="mt-12 pt-6 border-t-2 border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="font-terminal text-lg text-muted-foreground">
             © 2026 Khula Digital Solutions (PTY) LTD · KwaZulu-Natal, South Africa
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms</a>
+          <div className="flex items-center gap-6 font-terminal text-lg text-muted-foreground">
+            <a href="#contact" className="hover:text-foreground transition-colors">Privacy</a>
+            <a href="#contact" className="hover:text-foreground transition-colors">Terms</a>
+            <span className="text-arcade-green">● 1UP</span>
           </div>
         </div>
       </div>

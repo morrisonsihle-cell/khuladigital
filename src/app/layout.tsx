@@ -1,33 +1,59 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, DM_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import '../styles/tailwind.css';
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '900'],
-  variable: '--font-fraunces',
+// Retro 8-Bit design system fonts bundled locally so builds never fail on external font fetches
+// Display / brand headings: chunky 8-bit bitmap pixel font
+const pressStart = localFont({
+  src: './fonts/press-start-2p.woff2',
+  weight: '400',
+  style: 'normal',
+  variable: '--font-pixel',
   display: 'swap',
 });
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-dm-sans',
+// Body & paragraphs: clean, modern geometric sans-serif (variable weight 300–700)
+const spaceGrotesk = localFont({
+  src: './fonts/space-grotesk.woff2',
+  weight: '300 700',
+  style: 'normal',
+  variable: '--font-body',
+  display: 'swap',
+});
+
+// Terminal / HUD readouts
+const vt323 = localFont({
+  src: './fonts/vt323.woff2',
+  weight: '400',
+  style: 'normal',
+  variable: '--font-terminal',
   display: 'swap',
 });
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#111319',
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Khula Digital Solutions — Growing South African Businesses Online',
-  description: 'Khula Digital Solutions helps South African small businesses establish, manage, and grow their online presence through affordable websites, digital marketing, and business growth consulting.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://khuladigitalsolutions.co.za'),
+  title: 'Khula Digital Solutions — Level Up Your Digital Game',
+  description:
+    'Khula Digital Solutions crafts custom websites, e-commerce engines, and high-performance branding designed to scale South African businesses.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    apple: [{ url: '/assets/images/khula-logo.jpg' }],
+  },
+  openGraph: {
+    title: 'Khula Digital Solutions — Level Up Your Digital Game',
+    description:
+      'Custom websites, e-commerce stores, website management and digital marketing for South African small businesses.',
+    url: 'https://khuladigitalsolutions.co.za',
+    siteName: 'Khula Digital Solutions',
+    images: [{ url: '/assets/images/khula-logo.jpg', width: 1024, height: 1024 }],
+    type: 'website',
   },
 };
 
@@ -35,12 +61,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
-      <body className={dmSans.className}>
-        {children}
-
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fkhuladigit9356back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.20" />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></body>
+    <html
+      lang="en"
+      className={`${pressStart.variable} ${spaceGrotesk.variable} ${vt323.variable}`}
+      suppressHydrationWarning
+    >
+      <body className={spaceGrotesk.className}>{children}</body>
     </html>
   );
 }

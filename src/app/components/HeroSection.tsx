@@ -1,226 +1,133 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import AppImage from '@/components/ui/AppImage';
+import React from 'react';
+import AppLogo from '@/components/ui/AppLogo';
 
-const TYPING_PHRASES = [
-  'KHULA DIGITAL SOLUTIONS',
+const CODE_LINES = [
+  '> init khula_digital_solutions',
+  '> loading websites...',
+  '> seo_boost = true',
+  '> deploy --live',
+  '> leads += 150%',
+  '> level_up()',
+  '> status: ONLINE',
+  '> growth: +150%',
 ];
 
-function TypingHeadline() {
-  const [displayed, setDisplayed] = useState('');
-  const [charIndex, setCharIndex] = useState(0);
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    const text = TYPING_PHRASES[0];
-    if (charIndex < text.length) {
-      let timeout = setTimeout(() => {
-        setDisplayed(text.slice(0, charIndex + 1));
-        setCharIndex((c) => c + 1);
-      }, 80);
-      return () => clearTimeout(timeout);
-    } else {
-      setDone(true);
-    }
-  }, [charIndex]);
-
-  const mainText = 'KHULA DIGITAL';
-  const solutionsText = ' SOLUTIONS';
-
-  const displayedMain = displayed.slice(0, mainText.length);
-  const displayedSolutions = displayed.length > mainText.length
-    ? displayed.slice(mainText.length)
-    : '';
-
+function Coin({ className = '' }: { className?: string }) {
   return (
-    <span>
-      <span className={done ? 'animate-blink-text' : ''}>{displayedMain}</span>
-      {displayedSolutions && (
-        <span className="text-2xl md:text-3xl font-bold text-black align-middle ml-2">
-          {displayedSolutions}
-        </span>
-      )}
-      {!done && (
-        <span className="inline-block w-[3px] h-[0.85em] bg-primary ml-1 align-middle animate-pulse" />
-      )}
-    </span>
+    <svg viewBox="0 0 8 8" className={className} shapeRendering="crispEdges" aria-hidden="true">
+      <path fill="#111319" d="M2 0h4v1h1v1h1v4H7v1H6v1H2V7H1V6H0V2h1V1h1z" />
+      <path fill="#FFC933" d="M2 1h4v1h1v4H6v1H2V6H1V2h1z" />
+      <path fill="#FFF3B0" d="M2 2h1v3H2z" />
+      <path fill="#EA580C" d="M4 2h1v4H4z" />
+    </svg>
   );
 }
 
-const TAGLINE_PHRASES = [
-  'Growing Businesses Online',
-  'Building Your Digital Future',
-  'Empowering South African Brands',
-  'Crafting Powerful Websites',
-];
-
-function TypingAnimation() {
-  const [displayed, setDisplayed] = useState('');
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = TAGLINE_PHRASES[phraseIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!deleting && charIndex < current.length) {
-      timeout = setTimeout(() => setCharIndex((c) => c + 1), 60);
-    } else if (!deleting && charIndex === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 1800);
-    } else if (deleting && charIndex > 0) {
-      timeout = setTimeout(() => setCharIndex((c) => c - 1), 35);
-    } else if (deleting && charIndex === 0) {
-      setDeleting(false);
-      setPhraseIndex((p) => (p + 1) % TAGLINE_PHRASES.length);
-    }
-
-    setDisplayed(current.slice(0, charIndex));
-    return () => clearTimeout(timeout);
-  }, [charIndex, deleting, phraseIndex]);
-
+function Heart({ className = '' }: { className?: string }) {
   return (
-    <span className="inline-block min-h-[1.5em]">
-      {displayed}
-      <span className="inline-block w-[2px] h-[1em] bg-primary ml-0.5 align-middle animate-pulse" />
-    </span>
+    <svg viewBox="0 0 9 8" className={className} shapeRendering="crispEdges" aria-hidden="true">
+      <path fill="#111319" d="M1 0h3v1h1V0h3v1h1v3H8v1H7v1H6v1H5v1H4V7H3V6H2V5H1V4H0V1h1z" />
+      <path fill="#FF3B3B" d="M1 1h2v1h3V1h2v2H7v1H6v1H5v1H4V5H3V4H2V3H1z" />
+      <path fill="#FFB3B3" d="M1 1h1v1H1z" />
+    </svg>
+  );
+}
+
+/** Isometric-style retro terminal built from pixel blocks (arcade orange casing, CRT screen). */
+function RetroTerminal() {
+  return (
+    <div className="relative w-full max-w-[460px] mx-auto select-none" role="img" aria-label="Retro yellow and black computer terminal showing plus 150 percent growth">
+      {/* Orbiting sprites */}
+      <Coin className="absolute -top-2 left-6 w-8 h-8 animate-float" />
+      <Heart className="absolute top-10 -right-2 w-9 h-8 animate-float" />
+      <Coin className="absolute bottom-16 -left-4 w-7 h-7 animate-float" />
+      <Heart className="absolute -bottom-2 right-10 w-7 h-6 animate-float" />
+
+      {/* Monitor casing */}
+      <div className="relative bg-arcade-coin border-[3px] border-arcade-ink shadow-[8px_8px_0_0_#000] p-4 pb-6">
+        <div className="absolute top-0 left-0 right-0 h-2 bg-[#FFE600]" aria-hidden="true" />
+        {/* CRT screen */}
+        <div className="relative bg-[#06130c] border-[3px] border-arcade-ink overflow-hidden h-56">
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,0.25) 3px)' }} aria-hidden="true" />
+          <div className="p-3 font-terminal text-lg leading-6 text-arcade-green overflow-hidden h-full">
+            <div className="animate-scroll-code">
+              {[...CODE_LINES, ...CODE_LINES].map((l, i) => (
+                <div key={i}>{l}</div>
+              ))}
+            </div>
+          </div>
+          <div className="absolute bottom-3 right-3 bg-arcade-ink border-2 border-arcade-green px-2 py-1 font-pixel text-[10px] text-arcade-green">
+            +150% GROWTH
+          </div>
+        </div>
+        {/* Controls */}
+        <div className="flex items-center justify-between mt-4 px-1">
+          <div className="flex items-center gap-2">
+            <AppLogo size={26} className="flex-shrink-0" />
+            <div className="flex gap-1.5" aria-hidden="true">
+              <span className="w-3 h-3 bg-arcade-ink" />
+              <span className="w-3 h-3 bg-arcade-green" />
+              <span className="w-3 h-3 bg-arcade-coin" />
+            </div>
+          </div>
+          <div className="h-2 w-24 bg-arcade-ink/70" aria-hidden="true" />
+        </div>
+      </div>
+      {/* Stand + keyboard */}
+      <div className="mx-auto w-24 h-4 bg-[#282E3D] border-x-[3px] border-arcade-ink" aria-hidden="true" />
+      <div className="mx-auto w-[88%] h-9 bg-[#1E222D] border-[3px] border-arcade-ink shadow-[6px_6px_0_0_#000] grid grid-cols-12 gap-[3px] p-1.5" aria-hidden="true">
+        {Array.from({ length: 36 }).map((_, i) => (
+          <span key={i} className="bg-[#3A4152]" />
+        ))}
+      </div>
+    </div>
   );
 }
 
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      const mx = (clientX / innerWidth - 0.5) * 2;
-      const my = (clientY / innerHeight - 0.5) * 2;
-      const blob1 = el.querySelector<HTMLElement>('.hero-blob-1');
-      const blob2 = el.querySelector<HTMLElement>('.hero-blob-2');
-      if (blob1) {
-        blob1.style.transform = `translate(${mx * 30}px, ${my * 20}px) scale(1)`;
-      }
-      if (blob2) {
-        blob2.style.transform = `translate(${mx * -20}px, ${my * -15}px) scale(1)`;
-      }
-    };
-    el.addEventListener('mousemove', handleMouseMove);
-    return () => el.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ minHeight: '100svh' }}>
-
-      {/* Background photo */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url('/assets/images/1780590458133-1780591757398.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'blur(4px)',
-          transform: 'scale(1.05)',
-        }}
-      />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 z-0" style={{ background: 'rgba(0,0,0,0.72)' }} />
-
-      {/* Grid overlay lines */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex justify-center">
-        <div className="w-full max-w-7xl flex justify-between px-4">
-          {[0, 1, 2, 3, 4].map((i) =>
-          <div key={i} className="grid-overlay-line" />
-          )}
-        </div>
+      className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16 pixel-grid-bg"
+      style={{ minHeight: '100svh' }}
+      aria-labelledby="hero-heading"
+    >
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] max-w-[140vw] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(255,201,51,0.26) 0%, rgba(234,179,8,0.08) 45%, transparent 70%)' }} />
       </div>
 
-      {/* Atmospheric blobs — very subtle */}
-      <div
-        className="hero-blob-1 blob-gold animate-blob-1 absolute w-[600px] h-[600px] top-[-100px] left-[-100px] z-0 opacity-40"
-        style={{ transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)' }} />
-      
-      <div
-        className="hero-blob-2 blob-amber animate-blob-2 absolute w-[500px] h-[500px] bottom-[-80px] right-[-80px] z-0 opacity-30"
-        style={{ transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)' }} />
-      
-      <div className="blob-gold animate-blob-3 absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-20" />
-
-      {/* Background texture */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '200px'
-      }} />
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto pt-24 pb-16">
-        {/* Eyebrow */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in mb-6 flex items-center justify-center gap-4">
-          <div className="h-px w-12 bg-primary/50" />
-          <span className="section-label">Est. 2024 · KwaZulu-Natal, South Africa</span>
-          <div className="h-px w-12 bg-primary/50" />
-        </div>
-
-        {/* Main headline — typing effect on KHULA Digital */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-1 mb-10">
-          <h1 className="font-display font-black leading-none tracking-tight text-hero-display text-gold-gradient">
-            <TypingHeadline />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        {/* Copy */}
+        <div className="animate-fade-in opacity-100">
+          <p className="font-terminal text-xl text-arcade-green mb-5 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-arcade-green animate-blink-dot" aria-hidden="true" />
+            PLAYER 1 READY · KWAZULU-NATAL, SA
+          </p>
+          <h1 id="hero-heading" className="font-pixel uppercase text-foreground" style={{ fontSize: 'clamp(1.35rem, 4.4vw, 3rem)', lineHeight: 1.3 }}>
+            <span className="text-arcade-coin block mb-3" style={{ fontSize: '0.46em', lineHeight: 1.4 }}>Khula Digital Solutions</span>
+            Level up your digital game
           </h1>
-        </div>
-
-        {/* Tagline with typing animation */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-3 mb-4">
-          <p className="text-xs md:text-sm uppercase tracking-[0.5em] text-muted-foreground font-medium">
-            <TypingAnimation />
+          <p className="mt-6 text-base md:text-lg text-foreground/75 max-w-xl leading-relaxed">
+            Khula Digital Solutions crafts custom websites, e-commerce engines, and high-performance branding designed to scale South African businesses.
           </p>
+
+          <div className="mt-9 flex flex-wrap gap-4 items-center">
+            <a href="#contact" className="btn-arcade whitespace-nowrap">[ Insert Coin / Get a Quote ]</a>
+            <a href="#services" className="btn-arcade-ghost whitespace-nowrap">[ Explore Quest Log ]</a>
+          </div>
+
+          <div className="mt-8 inline-flex items-center gap-3 border-2 border-arcade-green/60 bg-arcade-surface px-4 py-2" style={{ borderRadius: '9999px' }}>
+            <span className="font-pixel text-[10px] text-arcade-green">▲ +150%</span>
+            <span className="font-terminal text-lg text-foreground">CLIENT REVENUE BOOST</span>
+          </div>
         </div>
 
-        {/* Sub-tagline */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-3 mb-12">
-          <p className="text-base md:text-lg text-foreground/70 max-w-xl mx-auto font-light leading-relaxed">
-            We don&apos;t just build websites,{' '}
-            <span className="text-primary font-medium">we help businesses grow.</span>
-          </p>
+        {/* Centerpiece */}
+        <div className="animate-fade-in-delay-2 opacity-100">
+          <RetroTerminal />
         </div>
-
-        {/* CTAs */}
-        <div className="opacity-100 animate-on-scroll animate-fade-in-delay-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="#packages" className="btn-gold px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest">
-            View Packages
-          </a>
-          <a href="#about" className="btn-outline-gold px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest">
-            Our Story
-          </a>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 opacity-100 animate-on-scroll animate-fade-in-delay-4">
-        <div className="w-px h-16 mx-auto" style={{ background: 'linear-gradient(to bottom, #C9A227, transparent)' }} />
-      </div>
-
-      {/* Side decorative image (desktop only) — right side */}
-      <div className="hidden xl:block absolute right-8 top-1/2 -translate-y-1/2 w-40 h-56 opacity-100 animate-on-scroll animate-fade-in-delay-1 z-10">
-        <div className="w-full h-full border border-border/50 p-1.5 image-zoom">
-          <AppImage
-            src="https://images.unsplash.com/photo-1520545221203-f6ca6a8e3252"
-            alt="Team of professionals working on laptops in modern office environment, dim lighting"
-            width={160}
-            height={224}
-            className="w-full h-full object-cover opacity-70" />
-        </div>
-        <span className="absolute -bottom-6 right-0 text-[8px] uppercase tracking-[0.4em] text-muted-foreground text-right">
-          Built in SA
-        </span>
       </div>
     </section>
   );

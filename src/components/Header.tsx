@@ -5,143 +5,160 @@ import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Packages', href: '#packages' },
-  { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
-  { label: '🏆 Competition', href: '/competition' },
+  { label: '// 01 Services', href: '#services' },
+  { label: '// 02 Packages', href: '#packages' },
+  { label: '// 03 Workflow', href: '#process' },
+  { label: '// 04 About', href: '#about' },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [crt, setCrt] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && menuOpen) setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
       document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [menuOpen]);
 
-  const handleNavClick = () => setMenuOpen(false);
+  useEffect(() => {
+    document.documentElement.classList.toggle('crt-scanlines', crt);
+    return () => document.documentElement.classList.remove('crt-scanlines');
+  }, [crt]);
+
+  const close = () => setMenuOpen(false);
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-background/95 backdrop-blur-md border-b border-border' :'bg-transparent'
-        }`}
-      >
-        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <AppLogo size={72} />
+      <header className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-6">
+        <nav
+          aria-label="Main"
+          className={`max-w-7xl mx-auto h-16 pl-3 pr-3 flex items-center justify-between gap-3 border-2 transition-colors duration-300 ${
+            scrolled
+              ? 'bg-[#0A0B0E] border-arcade-coin shadow-[4px_4px_0_0_#000]'
+              : 'bg-background/80 backdrop-blur-sm border-border'
+          }`}
+          style={{ borderRadius: '9999px' }}
+        >
+          {/* Brand + server status */}
+          <Link href="/" className="flex items-center gap-3 min-w-0" aria-label="Khula Digital Solutions home">
+            <AppLogo size={42} className="flex-shrink-0" />
+            <span className="hidden sm:flex flex-col leading-none">
+              <span className="font-pixel text-[8.5px] xl:text-[9px] text-foreground whitespace-nowrap">
+                KHULA <span className="text-arcade-coin">DIGITAL SOLUTIONS</span>
+              </span>
+              <span className="flex items-center gap-1.5 mt-1.5 font-terminal text-sm text-arcade-green whitespace-nowrap">
+                <span className="w-2 h-2 bg-arcade-green animate-blink-dot" aria-hidden="true" />
+                SERVER: ONLINE
+              </span>
+            </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks?.map((link) => (
-              link?.href?.startsWith('/') ? (
+          {/* Arcade menu */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            {navLinks.map((link) =>
+              link.href.startsWith('/') ? (
                 <Link
-                  key={link?.label}
-                  href={link?.href}
-                  className="text-xs font-medium uppercase tracking-widest text-primary hover:text-primary/80 transition-colors duration-200"
+                  key={link.label}
+                  href={link.href}
+                  className="font-pixel text-[9px] uppercase text-arcade-coin hover:text-white transition-colors whitespace-nowrap"
                 >
-                  {link?.label}
+                  {link.label}
                 </Link>
               ) : (
                 <a
-                  key={link?.label}
-                  href={link?.href}
-                  className="text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-200"
+                  key={link.label}
+                  href={link.href}
+                  className="font-pixel text-[9px] uppercase text-muted-foreground hover:text-arcade-coin transition-colors whitespace-nowrap"
                 >
-                  {link?.label}
+                  {link.label}
                 </a>
               )
-            ))}
+            )}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <a
-              href="#contact"
-              className="btn-gold px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest"
+          {/* Status + CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={crt}
+              onClick={() => setCrt((v) => !v)}
+              className="font-terminal text-base text-muted-foreground hover:text-arcade-cyan transition-colors whitespace-nowrap"
             >
-              Get Started
+              [CRT: {crt ? 'ON' : 'OFF'}]
+            </button>
+            <span className="hidden 2xl:flex items-center gap-2 font-terminal text-base text-foreground whitespace-nowrap" aria-hidden="true">
+              HP <span className="hp-bar">{Array.from({ length: 8 }).map((_, i) => <span key={i} />)}</span> LVL 99
+            </span>
+            <a href="#contact" className="btn-arcade whitespace-nowrap !text-[10px] !px-4 !py-2.5" style={{ borderRadius: '9999px' }}>
+              [ Start Project ]
             </a>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile hamburger */}
           <button
+            type="button"
             className="md:hidden flex flex-col gap-1.5 p-2 z-50"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
-            <span
-              className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${
-                menuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${
-                menuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${
-                menuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            />
+            <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
         </nav>
       </header>
-      {/* Mobile Menu Overlay */}
+
+      {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
+        id="mobile-menu"
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
+        aria-hidden={!menuOpen}
       >
-        <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full gap-8">
-          {navLinks?.map((link, i) => (
-            link?.href?.startsWith('/') ? (
-              <Link
-                key={link?.label}
-                href={link?.href}
-                onClick={handleNavClick}
-                className="font-display text-3xl font-light text-primary hover:text-primary/80 transition-colors duration-200"
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                {link?.label}
+        <div className="absolute inset-0 bg-background/95 pixel-grid-bg" />
+        <div className="relative z-10 flex flex-col items-center justify-center h-full gap-7 px-6">
+          {navLinks.map((link) =>
+            link.href.startsWith('/') ? (
+              <Link key={link.label} href={link.href} onClick={close} className="font-pixel text-sm text-arcade-coin" tabIndex={menuOpen ? 0 : -1}>
+                {link.label}
               </Link>
             ) : (
-              <a
-                key={link?.label}
-                href={link?.href}
-                onClick={handleNavClick}
-                className="font-display text-3xl font-light text-foreground hover:text-primary transition-colors duration-200"
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                {link?.label}
+              <a key={link.label} href={link.href} onClick={close} className="font-pixel text-sm text-foreground hover:text-primary" tabIndex={menuOpen ? 0 : -1}>
+                {link.label}
               </a>
             )
-          ))}
-          <a
-            href="#contact"
-            onClick={handleNavClick}
-            className="btn-gold mt-4 px-10 py-3 rounded-full text-sm font-semibold uppercase tracking-widest"
+          )}
+          <button
+            type="button"
+            role="switch"
+            aria-checked={crt}
+            onClick={() => setCrt((v) => !v)}
+            className="font-terminal text-xl text-arcade-cyan"
+            tabIndex={menuOpen ? 0 : -1}
           >
-            Get Started
+            [CRT: {crt ? 'ON' : 'OFF'}]
+          </button>
+          <a href="#contact" onClick={close} className="btn-arcade mt-2" tabIndex={menuOpen ? 0 : -1}>
+            [ Start Project ]
           </a>
         </div>
       </div>
