@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
+import LegalModals from '@/components/LegalModals';
+import CookieConsentBanner from '@/components/CookieConsentBanner';
 import '../styles/tailwind.css';
 
 // Retro 8-Bit design system fonts bundled locally so builds never fail on external font fetches
@@ -66,7 +68,11 @@ export default function RootLayout({
       className={`${pressStart.variable} ${spaceGrotesk.variable} ${vt323.variable}`}
       suppressHydrationWarning
     >
-      <body className={spaceGrotesk.className}>{children}</body>
+      <body className={spaceGrotesk.className}>
+        {children}
+        <CookieConsentBanner />
+        <LegalModals />
+      </body>
     </html>
   );
 }

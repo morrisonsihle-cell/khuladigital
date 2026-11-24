@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import AppLogo from '@/components/ui/AppLogo';
+import { openLegalModal } from '@/components/legalConsent';
 
 const socialLinks = [
   {
@@ -80,8 +83,20 @@ export default function Footer() {
             © 2026 Khula Digital Solutions (PTY) LTD · KwaZulu-Natal, South Africa
           </p>
           <div className="flex items-center gap-6 font-terminal text-lg text-muted-foreground">
-            <a href="#contact" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#contact" className="hover:text-foreground transition-colors">Terms</a>
+            <button
+              type="button"
+              onClick={() => openLegalModal('privacy')}
+              className="hover:text-arcade-coin transition-colors cursor-pointer"
+            >
+              Privacy
+            </button>
+            <button
+              type="button"
+              onClick={() => openLegalModal('terms')}
+              className="hover:text-arcade-coin transition-colors cursor-pointer"
+            >
+              Terms
+            </button>
             <span className="text-arcade-green">● 1UP</span>
           </div>
         </div>
